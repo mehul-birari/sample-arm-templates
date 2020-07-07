@@ -4,6 +4,7 @@
   "parameters": {
     "webappName": {
       "type": "String",
+      "defaultValue": "[concat(uniqueString(resourceGroup().id), '-webapp')]",
       "metadata": {
         "description": "Web App name, max length 30 charachers."
       }
