@@ -2,8 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "sites_tmebira_webapp_name": {
+    "webappName": {
       "type": "String"
+      "metadata": {
+        "description": "Web App name, max length 30 charachers."
+      }
     },
     "serverfarms_joeyplan_externalid": {
       "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/ChinaCXPTeam-Resources/providers/Microsoft.Web/serverfarms/joeyplan",
@@ -21,19 +24,19 @@
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2018-11-01",
-      "name": "[parameters('sites_tmebira_webapp_name')]",
+      "name": "[parameters('webappName')]",
       "location": "Central US",
       "kind": "app",
       "properties": {
         "enabled": true,
         "hostNameSslStates": [
           {
-            "name": "[concat(parameters('sites_tmebira_webapp_name'), '.azurewebsites.net')]",
+            "name": "[concat(parameters('webappName'), '.azurewebsites.net')]",
             "sslState": "Disabled",
             "hostType": "Standard"
           },
           {
-            "name": "[concat(parameters('sites_tmebira_webapp_name'), '.scm.azurewebsites.net')]",
+            "name": "[concat(parameters('webappName'), '.scm.azurewebsites.net')]",
             "sslState": "Disabled",
             "hostType": "Repository"
           }
@@ -56,10 +59,10 @@
     {
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "2018-11-01",
-      "name": "[concat(parameters('sites_tmebira_webapp_name'), '/web')]",
+      "name": "[concat(parameters('webappName'), '/web')]",
       "location": "Central US",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_tmebira_webapp_name'))]"
+        "[resourceId('Microsoft.Web/sites', parameters('webappName'))]"
       ],
       "properties": {
         "numberOfWorkers": 1,
@@ -127,10 +130,10 @@
     {
       "type": "Microsoft.Web/sites/hostNameBindings",
       "apiVersion": "2018-11-01",
-      "name": "[concat(parameters('sites_tmebira_webapp_name'), '/', parameters('sites_tmebira_webapp_name'), '.azurewebsites.net')]",
+      "name": "[concat(parameters('webappName'), '/', parameters('webappName'), '.azurewebsites.net')]",
       "location": "Central US",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_tmebira_webapp_name'))]"
+        "[resourceId('Microsoft.Web/sites', parameters('webappName'))]"
       ],
       "properties": {
         "siteName": "tmebira-webapp",
@@ -139,10 +142,10 @@
     },
     {
       "type": "Microsoft.Web/sites/providers/diagnosticsettings",
-      "name": "[concat(parameters('sites_tmebira_webapp_name'),'/microsoft.insights/', parameters('settingName'))]",
+      "name": "[concat(parameters('webappName'),'/microsoft.insights/', parameters('settingName'))]",
       "apiVersion": "2017-05-01-preview",
       "dependsOn": [
-        "[concat('Microsoft.Web/sites/', parameters('sites_tmebira_webapp_name'))]"
+        "[concat('Microsoft.Web/sites/', parameters('webappName'))]"
       ],
       "properties": {
         "name": "[parameters('settingName')]",
