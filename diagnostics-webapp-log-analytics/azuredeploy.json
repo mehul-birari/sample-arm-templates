@@ -10,7 +10,8 @@
       }
     },
     "subscriptionId": {
-      "type": "string"
+      "type": "string",
+        "defaultValue": "subscription().subscriptionId"
      
     },
     "serverfarms_joeyplan_externalid": {
