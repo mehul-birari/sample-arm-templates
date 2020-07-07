@@ -11,7 +11,7 @@
     },
     "subscriptionId": {
       "type": "string",
-        "defaultValue": "subscription().subscriptionId"
+      "defaultValue": "subscription().subscriptionId"
      
     },
     "serverfarms_joeyplan_externalid": {
