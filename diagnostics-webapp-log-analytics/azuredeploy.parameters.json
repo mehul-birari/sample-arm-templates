@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sites_tmebira_webapp_name": {
+      "value": "tmebira-webapp2610"
+    },
+    "serverfarms_joeyplan_externalid": {
+      "value": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/ChinaCXPTeam-Resources/providers/Microsoft.Web/serverfarms/joeyplan"
+    },
+    "settingName": {
+      "value": "SLA"
+    },
+    "workspaceId": {
+      "value": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourcegroups/t-mebira-Management_Migration/providers/microsoft.operationalinsights/workspaces/Default-Workspaces"
+    }
+  }
+}

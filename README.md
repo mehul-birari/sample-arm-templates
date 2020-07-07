@@ -1,1 +1,1 @@
-# sample-arm-templates
+#sample arm templates
