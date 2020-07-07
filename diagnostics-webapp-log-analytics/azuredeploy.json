@@ -4,18 +4,14 @@
   "parameters": {
     "webappName": {
       "type": "String",
-      "defaultValue": "[concat(uniqueString(resourceGroup().id), '-webapp')]",
       "metadata": {
         "description": "Web App name, max length 30 charachers."
       }
     },
     "subscriptionId": {
-      "type": "string",
-      "defaultValue": "subscription().subscriptionId"
-     
+      "type": "string"      
     },
     "serverfarms_joeyplan_externalid": {
-      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/ChinaCXPTeam-Resources/providers/Microsoft.Web/serverfarms/joeyplan",
       "type": "String"
     },
     "settingName": {
