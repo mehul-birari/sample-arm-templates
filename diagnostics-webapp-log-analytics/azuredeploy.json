@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "webappName": {
-      "type": "String"
+      "type": "String",
       "metadata": {
         "description": "Web App name, max length 30 charachers."
       }
