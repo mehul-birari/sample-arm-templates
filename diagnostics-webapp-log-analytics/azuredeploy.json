@@ -22,7 +22,7 @@
     },
     "workspaceId": {
       "type": "String"
-    },
+    }
     
   },
   "variables": {},
