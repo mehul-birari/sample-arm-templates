@@ -13,6 +13,9 @@
     },
     "workspaceId": {
       "value": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourcegroups/t-mebira-Management_Migration/providers/microsoft.operationalinsights/workspaces/Default-Workspaces"
+    },
+    "subscriptionId": {
+      "value": "GEN-SUBS-ID"
     }
   }
 }
