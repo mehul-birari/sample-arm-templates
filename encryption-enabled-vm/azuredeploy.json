@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachinesName": {
+      "defaultValue": "vmwithhorses",
+      "type": "String"
+    },
+    "disksExternalId": {
+      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/T-MEBIRA-MANAGEMENT_MIGRATION/providers/Microsoft.Compute/disks/vmwithhorses_disk1_a3616535137142d7a3791393017cef45",
+      "type": "String"
+    },
+    "networkInterfacesExternalId": {
+      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.Network/networkInterfaces/vmwithhorses495",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2019-07-01",
+      "name": "[parameters('virtualMachinesName')]",
+      "location": "westus2",
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_D2s_v3"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
+          },
+          "osDisk": {
+            "osType": "Linux",
+            "name": "[concat(parameters('virtualMachinesName'), '_disk1_a3616535137142d7a3791393017cef45')]",
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS",
+              "id": "[parameters('disksExternalId')]"
+            },
+            "diskSizeGB": 30
+          },
+          "dataDisks": []
+        },
+        "osProfile": {
+          "computerName": "[parameters('virtualMachinesName')]",
+          "adminUsername": "AzureUserwithHorses",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "provisionVMAgent": true
+          },
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": true
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[parameters('networkInterfacesExternalId')]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "https://mebirastorageacc.blob.core.windows.net/"
+          }
+        }
+      }
+    }
+  ]
+}
