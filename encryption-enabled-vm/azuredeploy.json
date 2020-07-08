@@ -10,64 +10,84 @@
             "type": "string"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "networkSecurityGroupRules": {
-            "type": "array"
+            "defaultValue": "vmwithhorses178",
+			"type": "array"
         },
         "subnetName": {
+			"defaultValue": "vmwithhorses178",
             "type": "string"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "addressPrefixes": {
-            "type": "array"
+            "defaultValue": "vmwithhorses178",
+			"type": "array"
         },
         "subnets": {
-            "type": "array"
+            "defaultValue": "vmwithhorses178",
+			"type": "array"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "publicIpAddressType": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "publicIpAddressSku": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "virtualMachineName": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "virtualMachineComputerName": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "virtualMachineRG": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "osDiskType": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "virtualMachineSize": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "adminUsername": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "adminPassword": {
-            "type": "secureString"
+            "defaultValue": "vmwithhorses178",
+			"type": "secureString"
         },
         "diagnosticsStorageAccountName": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "diagnosticsStorageAccountId": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "diagnosticsStorageAccountType": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         },
         "diagnosticsStorageAccountKind": {
-            "type": "string"
+            "defaultValue": "vmwithhorses178",
+			"type": "string"
         }
     },
     "variables": {
