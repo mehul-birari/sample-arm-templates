@@ -52,16 +52,16 @@
     },
     "keyVaultResourceId": {
       "type": "string",
-      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.KeyVault/vaults/mebira-kv",
+      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.KeyVault/vaults/kv-mebira",
       "metadata": {
         "description": "KeyVault resource id."
       }
     },
     "keyVaultSecretUrl": {
       "type": "string",
-      "defaultValue": "https://mebira-kv.vault.azure.net/secrets/MySecret/1b4bc25bcc8c41bb8356e16026397f78",
+      "defaultValue": "https://kv-mebira.vault.azure.net/secrets/MySecret/6c13d964bd4c4238a6e0338c83bb7122",
       "metadata": {
-         "description": "KeyVault Secret Url."
+        "description": "KeyVault Secret Url."
       }
     }
   },
