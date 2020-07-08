@@ -49,6 +49,20 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "keyVaultResourceId": {
+      "type": "string",
+      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.KeyVault/vaults/mebira-kv",
+      "metadata": {
+        "description": "KeyVault resource id."
+      }
+    },
+    "keyVaultSecretUrl": {
+      "type": "string",
+      "defaultValue": "https://mebira-kv.vault.azure.net/secrets/MySecret/1b4bc25bcc8c41bb8356e16026397f78",
+      "metadata": {
+         "description": "KeyVault Secret Url."
+      }
     }
   },
   "variables": {
@@ -88,24 +102,24 @@
       }
     },
     {
-      "comments":  "Default Network Security Group for template",
-      "type":  "Microsoft.Network/networkSecurityGroups",
-      "apiVersion":  "2019-08-01",
-      "name":  "[variables('networkSecurityGroupName')]",
-      "location":  "[parameters('location')]",
+      "comments": "Default Network Security Group for template",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2019-08-01",
+      "name": "[variables('networkSecurityGroupName')]",
+      "location": "[parameters('location')]",
       "properties": {
         "securityRules": [
           {
-            "name":  "default-allow-3389",
+            "name": "default-allow-3389",
             "properties": {
-              "priority":  1000,
-              "access":  "Allow",
-              "direction":  "Inbound",
-              "destinationPortRange":  "3389",
-              "protocol":  "Tcp",
-              "sourcePortRange":  "*",
-              "sourceAddressPrefix":  "*",
-              "destinationAddressPrefix":  "*"
+              "priority": 1000,
+              "access": "Allow",
+              "direction": "Inbound",
+              "destinationPortRange": "3389",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*"
             }
           }
         ]
@@ -190,6 +204,14 @@
             "version": "latest"
           },
           "osDisk": {
+            "encryptionSettings": {
+              "diskEncryptionKey": {
+                "sourceVault": {
+                  "id": "[parameters('keyVaultResourceId')]"
+                },
+                "secretUrl": "[parameters('keyVaultSecretUrl')]"
+              }
+            },
             "createOption": "FromImage"
           },
           "dataDisks": [
