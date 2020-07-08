@@ -1,95 +1,15 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "value": "westus2"
-        },
-        "networkInterfaceName": {
-            "value": "vmwithhorses178"
-        },
-        "networkSecurityGroupName": {
-            "value": "vmwithhorses-nsg"
-        },
-        "networkSecurityGroupRules": {
-            "value": [
-                {
-                    "name": "RDP",
-                    "properties": {
-                        "priority": 300,
-                        "protocol": "TCP",
-                        "access": "Allow",
-                        "direction": "Inbound",
-                        "sourceAddressPrefix": "*",
-                        "sourcePortRange": "*",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "3389"
-                    }
-                }
-            ]
-        },
-        "subnetName": {
-            "value": "default"
-        },
-        "virtualNetworkName": {
-            "value": "t-mebira-Management_Migration-vnet"
-        },
-        "addressPrefixes": {
-            "value": [
-                "172.17.4.0/24"
-            ]
-        },
-        "subnets": {
-            "value": [
-                {
-                    "name": "default",
-                    "properties": {
-                        "addressPrefix": "172.17.4.0/24"
-                    }
-                }
-            ]
-        },
-        "publicIpAddressName": {
-            "value": "vmwithhorses-ip"
-        },
-        "publicIpAddressType": {
-            "value": "Dynamic"
-        },
-        "publicIpAddressSku": {
-            "value": "Basic"
-        },
-        "virtualMachineName": {
-            "value": "vmwithhorses"
-        },
-        "virtualMachineComputerName": {
-            "value": "vmwithhorses"
-        },
-        "virtualMachineRG": {
-            "value": "t-mebira-Management_Migration"
-        },
-        "osDiskType": {
-            "value": "Premium_LRS"
-        },
-        "virtualMachineSize": {
-            "value": "Standard_D2s_v3"
-        },
-        "adminUsername": {
-            "value": "AzureUserwithHorses"
-        },
-        "adminPassword": {
-            "value": null
-        },
-        "diagnosticsStorageAccountName": {
-            "value": "mebirastorageacc"
-        },
-        "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/mebirastorageacc"
-        },
-        "diagnosticsStorageAccountType": {
-            "value": "Standard_LRS"
-        },
-        "diagnosticsStorageAccountKind": {
-            "value": "Storage"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "GEN-UNIQUE"
+    },
+    "adminPassword": {
+      "value": "GEN-PASSWORD"
+    },
+    "dnsLabelPrefix": {
+      "value": "GEN-UNIQUE"
     }
+  }
 }
