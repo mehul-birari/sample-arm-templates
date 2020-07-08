@@ -6,6 +6,7 @@
             "type": "string"
         },
         "networkInterfaceName": {
+			"defaultValue": "vmwithhorses178",
             "type": "string"
         },
         "networkSecurityGroupName": {
