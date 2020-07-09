@@ -10,12 +10,7 @@
     },
     "adminPassword": {
       "type": "securestring",
-	  "reference": {
-        "keyVault": {
-          "id": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira/providers/Microsoft.KeyVault/vaults/kv-tmebira"
-        },
-        "secretName": "MySecret"
-      },
+	  "defaultValue": "[concat('Subscription#, substring(resourceGroup().id,14,11))]",
       "metadata": {
         "description": "Password for the Virtual Machine."
       }	  
