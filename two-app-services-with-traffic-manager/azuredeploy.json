@@ -51,7 +51,7 @@
     },
     {
       "apiVersion": "2019-08-01",
-      "name": "[concat(parameters('uniqueDnsNameForWebApp'), copyIndex())]",
+      "name": "[parameters('uniqueDnsNameForWebApp')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
       "dependsOn": [
