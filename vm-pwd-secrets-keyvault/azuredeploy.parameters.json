@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "GEN-UNIQUE"
+    },
+    "adminPassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.KeyVault/vaults/kv-mebira"
+        },
+        "secretName": "MySecret"
+      }
+    },
+    "dnsLabelPrefix": {
+      "value": "GEN-UNIQUE"
+    }
+  }
+}
