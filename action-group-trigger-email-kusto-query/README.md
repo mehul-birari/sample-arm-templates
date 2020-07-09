@@ -1,7 +1,7 @@
-# Enable diagnostics for a webapp to send logs to a Log Analytics Workspace
+# Create an Action Group with alerts
 
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmehul-birari%2Fsample-arm-templates%2Fmaster%2Fdiagnostics-webapp-log-analytics%2Fazuredeploy.json)  
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmehul-birari%2Fsample-arm-templates%2Fmaster%2Faction-group-trigger-email-kusto-query%2Fazuredeploy.json)  
 
-This template allows deploying a web app to the Azure portal and enable diagnostic settings to send logs to a specific Log Analytics Workspace. 
+This template allows us to create an action group with alerts to trigger email to an individual's alias via a sample kusto query. 
 
