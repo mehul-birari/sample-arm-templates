@@ -100,7 +100,7 @@
             "name": "endpoint1",
             "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
             "properties": {
-              "target": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
+              "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
               "endpointStatus": "Enabled"
             }
           },
@@ -108,7 +108,7 @@
             "name": "endpoint2",
             "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
             "properties": {
-              "target": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]",
+              "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]",
               "endpointStatus": "Enabled"
             }
           }
