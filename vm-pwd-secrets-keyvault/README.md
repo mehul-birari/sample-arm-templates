@@ -1,7 +1,7 @@
-# Deploy a Virtual Machine with Encryption enabled
+# Deploy a Virtual Machine with password secrets in Keyvault
 
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmehul-birari%2Fsample-arm-templates%2Fmaster%2Fencryption-enabled-vm%2Fazuredeploy.json)  
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://raw.githubusercontent.com/mehul-birari/sample-arm-templates/master/vm-pwd-secrets-keyvault/azuredeploy.json)  
 
-This template enables us to deploy an encryption enabled Virtual Machine. 
+This template enables us to deploy a Virtual Machine with password secrets in KeyVault. 
 
