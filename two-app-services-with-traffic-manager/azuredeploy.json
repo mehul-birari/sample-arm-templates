@@ -93,7 +93,26 @@
           "protocol": "HTTPS",
           "port": 443,
           "path": "/"
-        }
+        },
+        "endpoints": [
+          {
+
+            "name": "endpoint1",
+            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+            "properties": {
+              "target": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
+              "endpointStatus": "Enabled"
+            }
+          },
+          {
+            "name": "endpoint1",
+            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+            "properties": {
+              "target": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]",
+              "endpointStatus": "Enabled"
+            }
+          }
+        ]
       }
     },
     {
