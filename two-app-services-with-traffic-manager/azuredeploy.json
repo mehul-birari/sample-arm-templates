@@ -93,8 +93,7 @@
           "protocol": "HTTPS",
           "port": 443,
           "path": "/"
-        },
-		
+        }
       }
     },
     {
