@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "GEN-UNIQUE"
+      "value": "mbusername"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "Mbpassword123"
     },
     "dnsLabelPrefix": {
-      "value": "somedns"
+      "value": "somednsmb"
     }
   }
 }

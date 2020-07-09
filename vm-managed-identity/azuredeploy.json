@@ -235,6 +235,7 @@
           "port": 50342
         }
       }
+    }
   ],
   "outputs": {
     "hostname": {
