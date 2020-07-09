@@ -12,12 +12,6 @@
       "type": "securestring",
       "metadata": {
         "description": "Password for the Virtual Machine."
-      },
-      "reference": {
-          "keyVault": {
-            "id": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.KeyVault/vaults/kv-mebira"
-          },
-          "secretName": "MySecret"
       }
     },
     "dnsLabelPrefix": {
@@ -54,6 +48,20 @@
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "Location for all resources."
+      }
+    },
+    "keyVaultResourceId": {
+      "type": "string",
+      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira/providers/Microsoft.KeyVault/vaults/kv-tmebira",
+      "metadata": {
+        "description": "KeyVault resource id."
+      }
+    },
+    "keyVaultSecretUrl": {
+      "type": "string",
+      "defaultValue": "https://kv-tmebira.vault.azure.net/secrets/MySecret/5c93b21319b9490fb9b49ca2173ff88f",
+      "metadata": {
+        "description": "KeyVault Secret Url."
       }
     }
   },
@@ -196,6 +204,14 @@
             "version": "latest"
           },
           "osDisk": {
+            "encryptionSettings": {
+              "diskEncryptionKey": {
+                "sourceVault": {
+                  "id": "[parameters('keyVaultResourceId')]"
+                },
+                "secretUrl": "[parameters('keyVaultSecretUrl')]"
+              }
+            },
             "createOption": "FromImage"
           },
           "dataDisks": [
