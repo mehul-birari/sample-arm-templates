@@ -29,6 +29,10 @@
       "metadata": {
         "description": "Name of the trafficManager being created"
       }
+    },
+    "webAppCount": {
+      "type": "int",
+      "defaultValue": 2
     }
   },
 
@@ -47,7 +51,7 @@
     },
     {
       "apiVersion": "2019-08-01",
-      "name": "[parameters('uniqueDnsNameForWebApp')]",
+      "name": "[concat(parameters('uniqueDnsNameForWebApp'), copyIndex())]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -56,6 +60,10 @@
       ],
       "properties": {
         "serverFarmId": "[parameters('webServerName')]"
+      },
+      "copy": {
+        "name": "[concat(parameters('uniqueDnsNameForWebApp'), copyIndex())]",
+        "count": "[parameters('webAppCount')]"
       }
     },
     {
