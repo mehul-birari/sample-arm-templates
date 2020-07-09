@@ -5,7 +5,10 @@
     "uniqueDnsName": {
       "value": "GEN-UNIQUE-32"
     },
-    "uniqueDnsNameForWebApp": {
+    "uniqueDnsNameForWebApp1": {
+      "value": "GEN-UNIQUE-32"
+    },
+	"uniqueDnsNameForWebApp2": {
       "value": "GEN-UNIQUE-32"
     },
     "trafficManagerName": {

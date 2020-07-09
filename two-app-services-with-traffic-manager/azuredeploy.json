@@ -38,7 +38,7 @@
     },
     "webAppCount": {
       "type": "int",
-      "defaultValue": "2"
+      "defaultValue": 2
     }
   },
 
