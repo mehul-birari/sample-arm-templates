@@ -93,30 +93,35 @@
           "protocol": "HTTPS",
           "port": 443,
           "path": "/"
-        },
-        "dependsOn": [
-          "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
-          "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]"
-        ],
-        "endpoints": [
-          {
-
-            "name": "endpoint1",
-            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
-            "properties": {
-              "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
-              "endpointStatus": "Enabled"
-            }
-          },
-          {
-            "name": "endpoint2",
-            "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
-            "properties": {
-              "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]",
-              "endpointStatus": "Enabled"
-            }
-          }
-        ]
+        }
+      }
+    },
+    {
+      "apiVersion": "2018-08-01",
+      "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/trafficManagerProfiles/',parameters('trafficManagerName'))]",
+        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp1'))]"
+      ],
+      "location": "global",
+      "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp1'))]",
+      "properties": {
+        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
+        "endpointStatus": "Enabled"
+      }
+    },
+    {
+      "apiVersion": "2018-08-01",
+      "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/trafficManagerProfiles/',parameters('trafficManagerName'))]",
+        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp2'))]"
+      ],
+      "location": "global",
+      "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp2'))]",
+      "properties": {
+        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]",
+        "endpointStatus": "Enabled"
       }
     }
   ]
