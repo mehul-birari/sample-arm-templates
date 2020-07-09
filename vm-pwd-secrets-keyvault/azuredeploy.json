@@ -12,14 +12,6 @@
       "type": "securestring",
       "metadata": {
         "description": "Password for the Virtual Machine."
-      },
-      "defaultValue": {
-        "reference": {
-          "keyVault": {
-            "id": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.KeyVault/vaults/kv-mebira"
-          },
-          "secretName": "MySecret"
-        }
       }
     },
     "dnsLabelPrefix": {
