@@ -62,7 +62,7 @@
         "serverFarmId": "[parameters('webServerName')]"
       },
       "copy": {
-        "name": "webappcopy]",
+        "name": "webappcopy",
         "count": "[parameters('webAppCount')]"
       }
     },
