@@ -9,7 +9,7 @@
       }
     },
     "uniqueDnsNameForWebApp": {
-      "type": "string",
+      "type": "arary",
       "metadata": {
         "description": "Relative DNS name for the WebApps, must be globally unique.  An index will be appended for each Web App."
       }
