@@ -90,12 +90,12 @@
       "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
       "dependsOn": [
         "[resourceId('Microsoft.Network/trafficManagerProfiles/',parameters('trafficManagerName'))]",
-        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp')[copyIndex()])]"
+        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp')[0])]"
       ],
       "location": "global",
-      "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp')[copyIndex()])]",
+      "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp')[0])]",
       "properties": {
-        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp')[copyIndex()])]",
+        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp')[0])]",
         "endpointStatus": "Enabled"
       }
     }
