@@ -90,7 +90,7 @@
       "type": "Microsoft.Network/trafficManagerProfiles/azureEndpoints",
       "dependsOn": [
         "[resourceId('Microsoft.Network/trafficManagerProfiles/',parameters('trafficManagerName'))]",
-        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp'))]"
+        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp')[copyIndex())]"
       ],
       "location": "global",
       "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp'))]",
