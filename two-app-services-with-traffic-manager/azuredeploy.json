@@ -94,6 +94,10 @@
           "port": 443,
           "path": "/"
         },
+		"dependsOn": [
+        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp1'))]",
+        "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp2'))]"
+		],
         "endpoints": [
           {
 
