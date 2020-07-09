@@ -10,7 +10,7 @@
     },
     "adminPassword": {
       "type": "securestring",
-	  "defaultValue": "[concat('Subscription#, substring(resourceGroup().id,14,11))]",
+	  "defaultValue": "[concat('Subscription#', substring(resourceGroup().id,14,11))]",
       "metadata": {
         "description": "Password for the Virtual Machine."
       }	  
