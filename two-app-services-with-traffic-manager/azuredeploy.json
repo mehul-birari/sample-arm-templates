@@ -93,9 +93,9 @@
         "[resourceId('Microsoft.Web/sites/',parameters('uniqueDnsNameForWebApp')[copyIndex()])]"
       ],
       "location": "global",
-      "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp'))]",
+      "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp')[copyIndex()])]",
       "properties": {
-        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp'))]",
+        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp')[copyIndex()])]",
         "endpointStatus": "Enabled"
       }
     }
