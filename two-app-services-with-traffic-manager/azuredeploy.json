@@ -29,6 +29,10 @@
       "metadata": {
         "description": "Name of the trafficManager being created"
       }
+    },
+    "webAppCount": {
+      "type": "int",
+      "defaultValue": "2"
     }
   },
 
@@ -56,6 +60,10 @@
       ],
       "properties": {
         "serverFarmId": "[parameters('webServerName')]"
+      },
+      "copy": {
+        "name": "[concat(parameters('uniqueDnsNameForWebApp'), 'copy')]",
+        "count": "[parameters('webAppCount')]"
       }
     },
     {
