@@ -9,10 +9,14 @@
       }
     },
     "uniqueDnsNameForWebApp": {
-      "type": "string",
+      "type": "array",
       "metadata": {
         "description": "Relative DNS name for the WebApps, must be globally unique.  An index will be appended for each Web App."
-      }
+      },
+	  "defaultValue": [
+		"mbwebapp",
+		"webappmb"
+	  ]
     },
     "webServerName": {
       "type": "string",
@@ -51,7 +55,7 @@
     },
     {
       "apiVersion": "2019-08-01",
-      "name": "[parameters('uniqueDnsNameForWebApp')]",
+      "name": "[concat(parameters('uniqueDnsNameForWebApp')[copyIndex()], uniqueString(resourceGroup().id))]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
       "dependsOn": [
