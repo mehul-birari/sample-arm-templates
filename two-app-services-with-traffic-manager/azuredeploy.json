@@ -107,7 +107,7 @@
       "location": "global",
       "name": "[concat(parameters('trafficManagerName'),'/',parameters('uniqueDnsNameForWebApp1'))]",
       "properties": {
-        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1')), resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp2'))]",
+        "targetResourceId": "[resourceId('Microsoft.Web/sites/', parameters('uniqueDnsNameForWebApp1'))]",
         "endpointStatus": "Enabled"
       }
     }
