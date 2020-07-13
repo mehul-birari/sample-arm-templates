@@ -51,7 +51,7 @@
   "parameters": {
   },
   "variables": {
-    "alertLocation": "southcentralus",
+    "alertLocation": "westus2",
     "alertName": "samplelogalert",
     "alertDescription": "Sample log search alert",
     "alertStatus": "true",
