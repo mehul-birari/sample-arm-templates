@@ -51,7 +51,7 @@
   "parameters": {
   },
   "variables": {
-    "alertLocation": "westus2",
+    "alertLocation": "eastus",
     "alertName": "samplelogalert",
     "alertDescription": "Sample log search alert",
     "alertStatus": "true",
