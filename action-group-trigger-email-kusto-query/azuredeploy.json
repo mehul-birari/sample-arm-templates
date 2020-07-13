@@ -1,4 +1,5 @@
-{
+/*
+  {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -41,4 +42,73 @@
       "value": "[resourceId('Microsoft.Insights/actionGroups',parameters('actionGroupName'))]"
     }
   }
+}
+*/
+
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "variables": {
+    "alertLocation": "southcentralus",
+    "alertName": "samplelogalert",
+    "alertDescription": "Sample log search alert",
+    "alertStatus": "true",
+    "alertSource": {
+      "Query": "requests | where resultCode == \"500\"",
+      "SourceId": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-management_migration/providers/microsoft.operationalinsights/workspaces/mbLAW",
+      "Type": "ResultCount"
+    },
+    "alertSchedule": {
+      "Frequency": 15,
+      "Time": 60
+    },
+    "alertActions": {
+      "SeverityLevel": "4"
+    },
+    "alertTrigger": {
+      "Operator": "GreaterThan",
+      "Threshold": "1"
+    },
+    "actionGrp": {
+      "ActionGroup": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-management_migration/providers/microsoft.operationalinsights/actiongroups/mb-AG",
+      "Subject": "Customized Email Header",
+      "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+    }
+  },
+  "resources": [
+    {
+      "name": "[variables('alertName')]",
+      "type": "Microsoft.Insights/scheduledQueryRules",
+      "apiVersion": "2018-04-16",
+      "location": "[variables('alertLocation')]",
+      "properties": {
+        "description": "[variables('alertDescription')]",
+        "enabled": "[variables('alertStatus')]",
+        "source": {
+          "query": "[variables('alertSource').Query]",
+          "dataSourceId": "[variables('alertSource').SourceId]",
+          "queryType": "[variables('alertSource').Type]"
+        },
+        "schedule": {
+          "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
+          "timeWindowInMinutes": "[variables('alertSchedule').Time]"
+        },
+        "action": {
+          "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+          "severity": "[variables('alertActions').SeverityLevel]",
+          "aznsAction": {
+            "actionGroup": "[array(variables('actionGrp').ActionGroup)]",
+            "emailSubject": "[variables('actionGrp').Subject]",
+            "customWebhookPayload": "[variables('actionGrp').Webhook]"
+          },
+          "trigger": {
+            "thresholdOperator": "[variables('alertTrigger').Operator]",
+            "threshold": "[variables('alertTrigger').Threshold]"
+          }
+        }
+      }
+    }
+  ]
 }
