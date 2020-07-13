@@ -72,7 +72,7 @@
       "Threshold": "1"
     },
     "actionGrp": {
-      "ActionGroup": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-management_migration/providers/microsoft.operationalinsights/actiongroups/mb-AG",
+      "ActionGroup": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-management_migration/providers/microsoft.insights/actiongroups/mb-AG",
       "Subject": "Customized Email Header",
       "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
     }
