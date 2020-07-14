@@ -21,6 +21,10 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "serviceBusId": {
+      "defaultValue": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-Management_Migration/providers/Microsoft.Web/connections/servicebus",
+      "type": "string"
     }
   },
   "variables": {},
@@ -85,7 +89,17 @@
           },
           "outputs": {}
         },
-        "parameters": {}
+        "parameters": {
+          "$connections": {
+            "value": {
+              "servicebus": {
+                "connectionId": "[parameters('serviceBusId')]",
+                "connectionName": "servicebus",
+                "id": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/providers/Microsoft.Web/locations/westus2/managedApis/servicebus"
+              }
+            }
+          }
+        }
       }
     }
   ],
