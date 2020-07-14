@@ -89,7 +89,7 @@
               "bindings": [
                 {
                   "authLevel": "anonymous",
-                  "name": "req",
+                  "name": "my-EHT",
                   "type": "eventHubTrigger",
                   "direction": "in"
                 }
