@@ -138,7 +138,7 @@
     {
       "type": "Microsoft.ApiManagement/service/apis",
       "apiVersion": "2019-12-01",
-      "name": "[concat(parameters('apiManagementServiceName'), '/-LA')]",
+      "name": "[concat(parameters('apiManagementServiceName'), 'LA')]",
       "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service', parameters('apiManagementServiceName'))]"
       ],
