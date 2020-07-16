@@ -5,7 +5,7 @@
     "apiManagementServiceName": {
       "type": "string",
       "metadata": {
-        "description": "The name of the APIM service to create."
+        "description": "The name of the API Management service to create."
       },
       "defaultValue": "my-APIM"
     },
