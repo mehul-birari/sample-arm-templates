@@ -1,0 +1,196 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "apiManagementServiceName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the APIM service to create."
+      },
+      "defaultValue": "my-APIM"
+    },
+    "functionAppName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the function app that you wish to create."
+      }
+    },
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+    "publisherEmail": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "The email address of the owner of the service"
+      }
+    },
+    "publisherName": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "The name of the owner of the service"
+      }
+    },
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "Developer",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "Developer",
+      "metadata": {
+        "description": "The pricing tier of this API Management service"
+      }
+    },
+    "skuCount": {
+      "type": "string",
+      "allowedValues": [
+        "1",
+        "2"
+      ],
+      "defaultValue": "1",
+      "metadata": {
+        "description": "The instance size of this API Management service."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    }
+  },
+  "variables": {
+    "functionAppName": "[parameters('functionAppName')]",
+    "hostingPlanName": "[parameters('functionAppName')]",
+    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "accountType": "[parameters('storageAccountType')]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2015-04-01",
+      "name": "[variables('hostingPlanName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('hostingPlanName')]",
+        "computeMode": "Dynamic",
+        "sku": "Dynamic"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('functionAppName')]",
+      "location": "[resourceGroup().location]",
+      "kind": "functionapp",
+      "properties": {
+        "name": "[variables('functionAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+      ],
+      "resources": [
+        {
+          "apiVersion": "2017-03-01",
+          "name": "[parameters('apiManagementServiceName')]",
+          "type": "Microsoft.ApiManagement/service",
+          "location": "[parameters('location')]",
+          "tags": {},
+          "sku": {
+            "name": "[parameters('sku')]",
+            "capacity": "[parameters('skuCount')]"
+          },
+          "properties": {
+            "publisherEmail": "[parameters('publisherEmail')]",
+            "publisherName": "[parameters('publisherName')]"
+          }
+        },
+        {
+          "apiVersion": "2016-03-01",
+          "name": "appsettings",
+          "type": "config",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+          ],
+          "properties": {
+            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
+            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1,';')]",
+            "FUNCTIONS_EXTENSION_VERSION": "latest"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "TestFunctionCM",
+          "type": "functions",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+          ],
+          "properties": {
+            "config": {
+              "bindings": [
+                {
+                  "authLevel": "anonymous",
+                  "name": "req",
+                  "type": "httpTrigger",
+                  "direction": "in"
+                },
+                {
+                  "name": "res",
+                  "type": "http",
+                  "direction": "out"
+                }
+              ]
+            },
+            "files": {
+              "run.csx": "using System.Net;\r\n\r\n public static HttpResponseMessage Run(HttpRequestMessage req, TraceWriter log)\r\n\r\n {\r\n\r\n     return req.CreateResponse(HttpStatusCode.OK, \"Hello from MyFunction\");\r\n\r\n }"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-12-01",
+      "name": "[concat(parameters('apiManagementServiceName'), '/my-funcapp')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service', parameters('apiManagementServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "my-FuncApp",
+        "apiRevision": "1",
+        "description": "Import from \"my-FuncApp\" Function App",
+        "subscriptionRequired": true,
+        "path": "mb-FuncApp",
+        "protocols": [
+          "https"
+        ],
+        "isCurrent": true
+      }
+    }
+  ]
+}
