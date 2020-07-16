@@ -14,7 +14,7 @@
       "metadata": {
         "description": "The name of the logic app to create."
       },
-      "defaultValue": "my-LogicApp"
+      "defaultValue": "myLogicApp"
     },
     "testUri": {
       "type": "string",
@@ -65,13 +65,6 @@
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "Location for all resources."
-      }
-    },
-    "logicAppApiName": {
-      "type": "string",
-      "defaultValue": "myLAapi",
-      "metadata": {
-        "description": "The name of the Logic App Api"
       }
     }
   },
@@ -140,26 +133,6 @@
           "outputs": {}
         },
         "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.ApiManagement/service/apis",
-      "apiVersion": "2019-12-01",
-      "name": "[parameters('logicAppApiName')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', parameters('apiManagementServiceName'))]"
-      ],
-      "properties": {
-        "displayName": "my-APIM-LA",
-        "apiRevision": "1",
-        "description": "Azure Logic App.",
-        "subscriptionRequired": true,
-        "serviceUrl": "https://prod-04.westus2.logic.azure.com/workflows/41c534d786db4474aaac2fab813f3279/triggers",
-        "path": "httpbin",
-        "protocols": [
-          "https"
-        ],
-        "isCurrent": true
       }
     }
   ]
