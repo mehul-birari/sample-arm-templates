@@ -134,6 +134,26 @@
         },
         "parameters": {}
       }
+    },
+	{
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2019-12-01",
+      "name": "[concat(parameters('apiManagementServiceName'), '/my-apim-la')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service', parameters('apiManagementServiceName'))]"
+      ],
+      "properties": {
+        "displayName": "my-APIM-LA",
+        "apiRevision": "1",
+        "description": "Azure Logic App.",
+        "subscriptionRequired": true,
+        "serviceUrl": "https://prod-04.westus2.logic.azure.com/workflows/41c534d786db4474aaac2fab813f3279/triggers",
+        "path": "httpbin",
+        "protocols": [
+          "https"
+        ],
+        "isCurrent": true
+      }
     }
   ]
 }
