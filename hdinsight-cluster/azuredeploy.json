@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "defaultValue": "myHDIcluster",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.HDInsight/clusters",
+      "apiVersion": "2018-06-01-preview",
+      "name": "[parameters('clusterName')]",
+      "location": "West US 2",
+      "properties": {
+        "clusterVersion": "3.6.1000.67",
+        "osType": "Linux",
+        "clusterDefinition": {
+          "blueprint": "https://blueprints.azurehdinsight.net/hadoop-3.6.1000.67.2006100202.json",
+          "kind": "HADOOP",
+          "componentVersion": {
+            "Hadoop": "2.7"
+          }
+        },
+        "computeProfile": {
+          "roles": [
+            {
+              "name": "headnode",
+              "targetInstanceCount": 2,
+              "hardwareProfile": {
+                "vmSize": "standard_d12_v2"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "sshuser"
+                }
+              }
+            },
+            {
+              "name": "workernode",
+              "targetInstanceCount": 4,
+              "hardwareProfile": {
+                "vmSize": "standard_d4_v2"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "sshuser"
+                }
+              }
+            },
+            {
+              "name": "zookeepernode",
+              "targetInstanceCount": 3,
+              "hardwareProfile": {
+                "vmSize": "standard_a2_v2"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "sshuser"
+                }
+              }
+            }
+          ]
+        },
+        "tier": "standard",
+        "storageProfile": {
+          "storageaccounts": [
+            {
+              "name": "myclusterhdistorage.blob.core.windows.net",
+              "container": "[concat(parameters('clusterName'), '-2020-07-17t19-43-19-489z')]",
+              "isDefault": true
+            }
+          ]
+        },
+        "minSupportedTlsVersion": "1.2"
+      }
+    }
+  ]
+}
