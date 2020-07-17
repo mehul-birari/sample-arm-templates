@@ -18,7 +18,6 @@
         "clusterVersion": "3.6.1000.67",
         "osType": "Linux",
         "clusterDefinition": {
-          "blueprint": "https://blueprints.azurehdinsight.net/hadoop-3.6.1000.67.2006100202.json",
           "kind": "HADOOP",
           "componentVersion": {
             "Hadoop": "2.7"
