@@ -20,6 +20,11 @@
       "apiVersion": "2019-06-01",
       "name": "[parameters('storageAccountName')]",
       "location": "West US 2",
+      "sku": {
+        "name": "Standard_RAGRS",
+        "tier": "Standard"
+      },
+      "kind": "StorageV2",
       "properties": {
         "networkAcls": {
           "bypass": "AzureServices",
@@ -40,8 +45,7 @@
             }
           },
           "keySource": "Microsoft.Storage"
-        },
-        "accessTier": "Hot"
+        }
       }
     },
     {
