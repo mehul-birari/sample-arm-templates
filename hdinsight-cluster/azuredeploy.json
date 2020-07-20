@@ -86,7 +86,7 @@
               "osProfile": {
                 "linuxOperatingSystemProfile": {
                   "username": "sshuser",
-                  "password": "mypwd123"
+                  "password": "Mypassword123"
                 }
               }
             },
@@ -99,7 +99,7 @@
               "osProfile": {
                 "linuxOperatingSystemProfile": {
                   "username": "sshuser",
-                  "password": "mypwd123"
+                  "password": "Mypassword123"
                 }
               }
             }
