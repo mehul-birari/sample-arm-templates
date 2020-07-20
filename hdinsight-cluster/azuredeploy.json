@@ -4,55 +4,96 @@
   "parameters": {
     "clusterName": {
       "defaultValue": "myHDIcluster",
-      "type": "String"
+      "type": "String",
+      "metadata": {
+        "description": "The name of the HDinsight cluster"
+      }
+    },
+    "clusterLoginName": {
+      "type": "string",
+      "defaultValue": "admin",
+      "metadata": {
+        "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+      }
+    },
+    "clusterLoginPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password of atleast 10 characters containing atleast one digit, one alpha-numeric character, and one upper or lower case letter"
+      }
+    },
+    "sshUserName": {
+      "type": "string",
+      "defaultValue": "sshuser",
+      "metadata": {
+        "description": "Credentials to remotely access the cluster"
+      }
+    },
+    "sshPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password of atleast 10 characters containing atleast one digit, one alpha-numeric character, and one upper or lower case letter"
+      }
     },
     "storageAccountName": {
       "type": "string",
       "defaultValue": "mystoracc"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[uniqueString(resourceGroup().id)]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
     }
   },
   "variables": {
-    "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+    "defaultStorageAccount": {
+      "name": "[uniqueString(resourceGroup().id)]",
+      "type": "Standard_LRS"
+    }
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2019-06-01",
-      "name": "[parameters('storageAccountName')]",
-      "location": "West US 2",
+      "name": "[variables('defaultStorageAccount').name]",
+      "location": "[parameters('location')]",
       "sku": {
-        "name": "Standard_RAGRS",
-        "tier": "Standard"
+        "name": "[variables('defaultStorageAccount').type]"
       },
       "kind": "StorageV2",
       "properties": {
-        "networkAcls": {
-          "bypass": "AzureServices",
-          "virtualNetworkRules": [],
-          "ipRules": [],
-          "defaultAction": "Allow"
-        },
-        "supportsHttpsTrafficOnly": true,
-        "encryption": {
-          "services": {
-            "file": {
-              "keyType": "Account",
-              "enabled": true
-            },
-            "blob": {
-              "keyType": "Account",
-              "enabled": true
-            }
-          },
-          "keySource": "Microsoft.Storage"
-        }
+        //"networkAcls": {
+        //  "bypass": "AzureServices",
+        //  "virtualNetworkRules": [],
+        //  "ipRules": [],
+        //  "defaultAction": "Allow"
+        //},
+        //"supportsHttpsTrafficOnly": true,
+        //"encryption": {
+        //  "services": {
+        //    "file": {
+        //      "keyType": "Account",
+        //      "enabled": true
+        //    },
+        //    "blob": {
+        //      "keyType": "Account",
+        //      "enabled": true
+        //    }
+        //  },
+        //  "keySource": "Microsoft.Storage"
+        //}
       }
     },
     {
       "type": "Microsoft.HDInsight/clusters",
       "apiVersion": "2018-06-01-preview",
       "name": "[parameters('clusterName')]",
-      "location": "West US 2",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/',variables('defaultStorageAccount').name)]"
+      ],
       "properties": {
         "clusterVersion": "3.6.1000.67",
         "osType": "Linux",
@@ -72,8 +113,8 @@
               },
               "osProfile": {
                 "linuxOperatingSystemProfile": {
-                  "username": "sshuser",
-                  "password": "Mypassword123"
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
                 }
               }
             },
@@ -85,8 +126,8 @@
               },
               "osProfile": {
                 "linuxOperatingSystemProfile": {
-                  "username": "sshuser",
-                  "password": "Mypassword123"
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
                 }
               }
             },
@@ -98,8 +139,8 @@
               },
               "osProfile": {
                 "linuxOperatingSystemProfile": {
-                  "username": "sshuser",
-                  "password": "Mypassword123"
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
                 }
               }
             }
@@ -109,10 +150,10 @@
         "storageProfile": {
           "storageaccounts": [
             {
-              "name": "[concat(parameters('storageAccountName'), '.blob.core.windows.net')]",
-              "container": "[concat(parameters('clusterName'), 'cont')]",
+              "name": "[replace(replace(reference(resourceId('Microsoft.Storage/storageAccounts', variables('defaultStorageAccount').name), '2016-01-01').primaryEndpoints.blob,'https://',''),'/','')]",
+              "container": "[parameters('clusterName')]",
               "isDefault": true,
-              "key": "[listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value]"
+              "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('defaultStorageAccount').name), '2016-01-01').keys[0].value]"
             }
           ]
         },
