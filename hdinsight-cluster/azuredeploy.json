@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterName": {
-      "defaultValue": "myHDIcluster",
+      "defaultValue": "myhdicluster",
       "type": "String",
       "metadata": {
         "description": "The name of the HDinsight cluster"
