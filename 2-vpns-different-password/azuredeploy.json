@@ -239,7 +239,7 @@
                 "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet')]"
               },
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip')]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip2')]"
               }
             },
             "name": "vnetGatewayConfig2"
