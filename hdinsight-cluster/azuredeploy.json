@@ -5,10 +5,45 @@
     "clusterName": {
       "defaultValue": "myHDIcluster",
       "type": "String"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "defaultValue": "mystoracc"
     }
   },
-  "variables": {},
+  "variables": {
+    "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+  },
   "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "name": "[parameters('storageAccountName')]",
+      "location": "West US 2",
+      "properties": {
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "virtualNetworkRules": [],
+          "ipRules": [],
+          "defaultAction": "Allow"
+        },
+        "supportsHttpsTrafficOnly": true,
+        "encryption": {
+          "services": {
+            "file": {
+              "keyType": "Account",
+              "enabled": true
+            },
+            "blob": {
+              "keyType": "Account",
+              "enabled": true
+            }
+          },
+          "keySource": "Microsoft.Storage"
+        },
+        "accessTier": "Hot"
+      }
+    },
     {
       "type": "Microsoft.HDInsight/clusters",
       "apiVersion": "2018-06-01-preview",
@@ -33,7 +68,8 @@
               },
               "osProfile": {
                 "linuxOperatingSystemProfile": {
-                  "username": "sshuser"
+                  "username": "sshuser",
+                  "password": "mypwd123"
                 }
               }
             },
@@ -45,7 +81,8 @@
               },
               "osProfile": {
                 "linuxOperatingSystemProfile": {
-                  "username": "sshuser"
+                  "username": "sshuser",
+                  "password": "mypwd123"
                 }
               }
             },
@@ -57,7 +94,8 @@
               },
               "osProfile": {
                 "linuxOperatingSystemProfile": {
-                  "username": "sshuser"
+                  "username": "sshuser",
+                  "password": "mypwd123"
                 }
               }
             }
@@ -67,9 +105,10 @@
         "storageProfile": {
           "storageaccounts": [
             {
-              "name": "myclusterhdistorage.blob.core.windows.net",
-              "container": "[concat(parameters('clusterName'), '-2020-07-17t19-43-19-489z')]",
-              "isDefault": true
+              "name": "[concat(parameters('storageAccountName'), '.blob.core.windows.net')]",
+              "container": "[concat(parameters('clusterName'), 'cont')]",
+              "isDefault": true,
+              "key": "[listKeys(variables('storageAccountId'), '2019-04-01').keys[0].value]"
             }
           ]
         },

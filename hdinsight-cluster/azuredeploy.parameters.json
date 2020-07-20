@@ -4,6 +4,9 @@
   "parameters": {
     "clusterName": {
       "value": "GEN-UNIQUE"
+    },
+    "storageAccountName": {
+      "value": "GEN-UNIQUE"
     }
   }
 }
