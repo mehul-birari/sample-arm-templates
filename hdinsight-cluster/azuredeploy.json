@@ -9,7 +9,7 @@
         "description": "The name of the HDinsight cluster"
       }
     },
-    "clusterLoginName": {
+    "clusterLoginUserName": {
       "type": "string",
       "defaultValue": "admin",
       "metadata": {
@@ -41,7 +41,7 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[uniqueString(resourceGroup().id)]",
+      "defaultValue": "[uniqueString(resourceGroup().location)]",
       "metadata": {
         "description": "Location for all resources."
       }
