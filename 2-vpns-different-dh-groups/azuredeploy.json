@@ -3,7 +3,8 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "SharedKey": {
-      "type": "SecureString"
+      "type": "SecureString",
+      "defaultValue": "MySharedKey"
     },
     "virtualNetwork1": {
       "type": "string",
