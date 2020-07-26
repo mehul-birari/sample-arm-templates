@@ -166,11 +166,6 @@
               "hardwareProfile": {
                 "vmSize": "[parameters('WorkerNodeVirtualMachineSize')]"
               },
-              "dataDisksGroups": [
-                {
-                  "disksPerNode": 2
-                }
-              ],
               "osProfile": {
                 "linuxOperatingSystemProfile": {
                   "username": "[parameters('sshUserName')]",
