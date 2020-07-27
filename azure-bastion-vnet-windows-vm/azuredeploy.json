@@ -99,7 +99,7 @@
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('bastion-subnet-name'))]",
     "networkSecurityGroupName": "default-NSG",
 	"publicIPAddressName": "myPublicIP",
-	"subnetName": "Subnet",
+	"subnetName": "MySubnet",
     "subnetPrefix": "10.0.0.0/28"
   },
   "resources": [
@@ -249,16 +249,16 @@
                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
               }
             }
-          },
-		  {
-            "name": "[variables('subnetName')]",
-            "properties": {
-              "addressPrefix": "[variables('subnetPrefix')]",
-              "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
-              }
-            }
           }
+		  //{
+           // "name": "[variables('subnetName')]",
+            //"properties": {
+             // "addressPrefix": "[variables('subnetPrefix')]",
+              //"networkSecurityGroup": {
+               // "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+              //}
+           // }
+         // }
         ]
       }
     },
