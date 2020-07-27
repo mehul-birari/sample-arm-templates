@@ -100,7 +100,7 @@
     "networkSecurityGroupName": "default-NSG",
     "publicIPAddressName": "myPublicIP",
     "subnetName": "MySubnet",
-    "subnetPrefix": "10.0.0.0/28"
+    "subnetPrefix": "10.1.0.0/28"
   },
   "resources": [
     {
@@ -254,15 +254,6 @@
             
             }
           }
-          //{
-          // "name": "[variables('subnetName')]",
-          //"properties": {
-          // "addressPrefix": "[variables('subnetPrefix')]",
-          //"networkSecurityGroup": {
-          // "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
-          //}
-          // }
-          // }
         ]
       }
     },
