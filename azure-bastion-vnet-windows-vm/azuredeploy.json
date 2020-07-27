@@ -98,8 +98,8 @@
     "vmName": "SimpleWinVM",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('bastion-subnet-name'))]",
     "networkSecurityGroupName": "default-NSG",
-	"publicIPAddressName": "myPublicIP",
-	"subnetName": "MySubnet",
+    "publicIPAddressName": "myPublicIP",
+    "subnetName": "MySubnet",
     "subnetPrefix": "10.0.0.0/28"
   },
   "resources": [
@@ -123,10 +123,10 @@
         "name": "Standard"
       },
       "properties": {
-        "publicIPAllocationMethod": "Static",
+        "publicIPAllocationMethod": "Static"
       }
     },
-	{
+    {
       "apiVersion": "2019-02-01",
       "type": "Microsoft.Network/publicIpAddresses",
       "name": "[variables('publicIPAddressName')]",
@@ -141,7 +141,7 @@
         }
       }
     },
-	{
+    {
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2019-08-01",
       "name": "[variables('networkSecurityGroupName')]",
@@ -228,7 +228,7 @@
       "name": "[parameters('vnet-name')]",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[parameters('location')]",
-	  "dependsOn": [
+      "dependsOn": [
         "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
       ],
       "properties": {
@@ -247,15 +247,15 @@
               }
             }
           }
-		  //{
-           // "name": "[variables('subnetName')]",
-            //"properties": {
-             // "addressPrefix": "[variables('subnetPrefix')]",
-              //"networkSecurityGroup": {
-               // "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
-              //}
-           // }
-         // }
+          //{
+          // "name": "[variables('subnetName')]",
+          //"properties": {
+          // "addressPrefix": "[variables('subnetPrefix')]",
+          //"networkSecurityGroup": {
+          // "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+          //}
+          // }
+          // }
         ]
       }
     },
@@ -270,7 +270,7 @@
       }
     },
     {
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-08-01",
       "type": "Microsoft.Network/bastionHosts",
       "name": "[parameters('bastion-host-name')]",
       "location": "[parameters('location')]",
@@ -297,7 +297,7 @@
     },
     {
       "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2019-11-01",
       "name": "[variables('nicName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -323,7 +323,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-07-01",
       "name": "[variables('vmName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
