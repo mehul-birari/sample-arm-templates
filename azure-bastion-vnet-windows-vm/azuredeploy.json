@@ -246,6 +246,12 @@
                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
               }
             }
+          },
+		  {
+            "name": "[variables('subnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('subnetPrefix')]",
+            }
           }
           //{
           // "name": "[variables('subnetName')]",
