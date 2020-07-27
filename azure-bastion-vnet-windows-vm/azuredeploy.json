@@ -98,7 +98,9 @@
     "vmName": "SimpleWinVM",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('bastion-subnet-name'))]",
     "networkSecurityGroupName": "default-NSG",
-	"publicIPAddressName": "myPublicIP"
+	"publicIPAddressName": "myPublicIP",
+	"subnetName": "Subnet",
+    "subnetPrefix": "10.0.0.0/28"
   },
   "resources": [
     {
@@ -116,6 +118,21 @@
       "apiVersion": "2019-02-01",
       "type": "Microsoft.Network/publicIpAddresses",
       "name": "[variables('public-ip-address-name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Static",
+        "dnsSettings": {
+          "domainNameLabel": "[parameters('dnsLabelPrefix')]"
+        }
+      }
+    },
+	{
+      "apiVersion": "2019-02-01",
+      "type": "Microsoft.Network/publicIpAddresses",
+      "name": "[variables('publicIPAddressName')]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard"
@@ -243,6 +260,15 @@
             "name": "[variables('bastion-subnet-name')]",
             "properties": {
               "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+              }
+            }
+          },
+		  {
+            "name": "[variables('subnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('subnetPrefix')]",
               "networkSecurityGroup": {
                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
               }
