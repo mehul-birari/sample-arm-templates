@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "bastion-host-name": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "vnet-name": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "vnet-ip-prefix": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "vnet-new-or-existing": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "bastion-subnet-ip-prefix": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "adminUsername": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "adminPassword": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "dnsLabelPrefix": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "windowsOSVersion": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "vmSize": {
+      "value": "GEN-UNIQUE-8"
+    },
+    "location": {
+      "value": "GEN-UNIQUE-8"
+    }
+  }
+}
