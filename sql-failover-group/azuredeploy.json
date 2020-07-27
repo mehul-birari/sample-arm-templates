@@ -44,6 +44,13 @@
         "description": "The administrator password of the secondary SQL Server."
       }
     },
+    "sqlDatabaseName": {
+      "type": "string",
+      "defaultValue": "mysqlDatabase",
+      "metadata": {
+        "description": "The name of the SQL Database to be created."
+      }
+    },
     "sqlFailoverGroupName": {
       "type": "string",
       "metadata": {
@@ -59,7 +66,6 @@
     }
   },
   "variables": {
-    "sqlDatabaseName": "MyData",
     "sqlDatabaseServiceObjective": "Basic",
     "sqlDatabaseEdition": "Basic"
   },
@@ -95,17 +101,17 @@
               "failoverPolicy": "Disabled"
             },
             "databases": [
-              "[resourceId('Microsoft.Sql/servers/databases', parameters('sqlServerPrimaryName'), variables('sqlDatabaseName'))]"
+              "[resourceId('Microsoft.Sql/servers/databases', parameters('sqlServerPrimaryName'), parameters('sqlDatabaseName'))]"
             ]
           },
           "dependsOn": [
             "[parameters('sqlServerPrimaryName')]",
-            "[resourceId('Microsoft.Sql/servers/databases', parameters('sqlServerPrimaryName'), variables('sqlDatabaseName'))]",
+            "[resourceId('Microsoft.Sql/servers/databases', parameters('sqlServerPrimaryName'), parameters('sqlDatabaseName'))]",
             "[resourceId('Microsoft.Sql/servers', parameters('sqlServerSecondaryName'))]"
           ]
         },
         {
-          "name": "[variables('sqlDatabaseName')]",
+          "name": "[parameters('sqlDatabaseName')]",
           "type": "databases",
           "apiVersion": "2019-06-01-preview",
           "location": "[parameters('location')]",
