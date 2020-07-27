@@ -290,7 +290,7 @@
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('public-ip-address-name'))]"
               },
               "subnet": {
-                "id": "[variables('bastion-subnet-name')]"
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('bastion-subnet-name'))]"
               }
             }
           }
