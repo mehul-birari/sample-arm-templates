@@ -103,24 +103,12 @@
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
     "nicName": "myVMNic",
     "addressPrefix": "10.0.0.0/16",
-    "vmName": "SimpleLinuxVM",
+    "vmName": "SimpleWinVM",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('bastion-subnet-name'))]",
     "networkSecurityGroupName": "default-NSG",
-    "osDiskType": "Standard_LRS",
-    "linuxConfiguration": {
-      "disablePasswordAuthentication": true,
-      "ssh": {
-        "publicKeys": [
-          {
-            "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
-            "keyData": "[parameters('adminPasswordOrKey')]"
-          }
-        ]
-      }
-    },
     "publicIPAddressName": "myPublicIP",
-    "subnetName": "Subnet",
-    "subnetPrefix": "10.0.0.0/24"
+    "subnetName": "MySubnet",
+    "subnetPrefix": "10.1.0.0/28"
   },
   "resources": [
     {
@@ -143,10 +131,7 @@
         "name": "Standard"
       },
       "properties": {
-        "publicIPAllocationMethod": "Static",
-        "dnsSettings": {
-          "domainNameLabel": "[parameters('dnsLabelPrefix')]"
-        }
+        "publicIPAllocationMethod": "Static"
       }
     },
     {
@@ -264,19 +249,17 @@
           {
             "name": "[variables('bastion-subnet-name')]",
             "properties": {
-              "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]",
-              "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+              "addressPrefix": "[parameters('bastion-subnet-ip-prefix')]"
               }
-            }
           },
-          {
+		  {
             "name": "[variables('subnetName')]",
             "properties": {
               "addressPrefix": "[variables('subnetPrefix')]",
-              "networkSecurityGroup": {
+			  "networkSecurityGroup": {
                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
               }
+            
             }
           }
         ]
@@ -293,7 +276,7 @@
       }
     },
     {
-      "apiVersion": "2019-07-01",
+      "apiVersion": "2019-08-01",
       "type": "Microsoft.Network/bastionHosts",
       "name": "[parameters('bastion-host-name')]",
       "location": "[parameters('location')]",
@@ -318,33 +301,9 @@
         ]
       }
     },
-    //{
-    //  "comments": "Default Network Security Group for template",
-    //  "type": "Microsoft.Network/networkSecurityGroups",
-    //  "apiVersion": "2019-08-01",
-    //  "name": "[variables('networkSecurityGroupName')]",
-    //  "location": "[parameters('location')]",
-    //  "properties": {
-    //    "securityRules": [
-    //      {
-    //        "name": "default-allow-3389",
-    //        "properties": {
-    //          "priority": 1000,
-    //          "access": "Allow",
-    //          "direction": "Inbound",
-    //          "destinationPortRange": "3389",
-    //          "protocol": "Tcp",
-    //          "sourcePortRange": "*",
-    //          "sourceAddressPrefix": "*",
-    //          "destinationAddressPrefix": "*"
-    //        }
-    //      }
-    //    ]
-    //  }
-    //},
     {
       "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2018-11-01",
+      "apiVersion": "2019-11-01",
       "name": "[variables('nicName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -358,10 +317,10 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
               },
               "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('bastion-subnet-name'))]"
+                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnet-name'), variables('subnetName'))]"
               }
             }
           }
@@ -370,7 +329,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-07-01",
       "name": "[variables('vmName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
