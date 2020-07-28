@@ -1,0 +1,375 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "SharedKey": {
+      "type": "SecureString",
+      "defaultValue": "MySharedKey"
+    },
+    "virtualNetwork1": {
+      "type": "string",
+      "defaultValue": "My_VNET1",
+      "metadata": {
+        "description": "Name of VNET 1"
+      }
+    },
+    "subnetForVirtualNetwork1": {
+      "type": "string",
+      "defaultValue": "My_VNET1_subnet1"
+    },
+    "gatewaySubnetForVirtualNetwork1": {
+      "type": "string",
+      "defaultValue": "GatewaySubnet"
+    },
+    "virtualNetwork2": {
+      "type": "string",
+      "defaultValue": "My_VNET2",
+      "metadata": {
+        "description": "Name of VNET 2"
+      }
+    },
+    "subnetForVirtualNetwork2": {
+      "type": "string",
+      "defaultValue": "My_VNET2_subnet1"
+    },
+    "gatewaySubnetForVirtualNetwork2": {
+      "type": "string",
+      "defaultValue": "GatewaySubnet"
+    },
+    "publicIpAddressName": {
+      "type": "string",
+      "defaultValue": "My-VPN-pip"
+    },
+    "virtualNetworkGateway1": {
+      "type": "string",
+      "defaultValue": "My_VPNGW1"
+    },
+    "virtualNetworkGateway2": {
+      "type": "string",
+      "defaultValue": "My_VPNGW2"
+    },
+    "localNetworkGateway1": {
+      "type": "string",
+      "defaultValue": "My_LNG_To_VPN2"
+    },
+    "localNetworkGateway2": {
+      "type": "string",
+      "defaultValue": "My_LNG_To_VPN1"
+    },
+    "vnet1ToVnet2Connection": {
+      "type": "string",
+      "defaultValue": "My_VNET1toVNET2_Conn"
+    },
+    "vnet2ToVnet1Connection": {
+      "type": "string",
+      "defaultValue": "My_VNET2toVNET1_Conn"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "apiVersion": "2018-10-01",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "My_VNET1",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        }
+      },
+      "resources": [
+        {
+          "apiVersion": "2018-10-01",
+          "type": "subnets",
+          "location": "[resourceGroup().location]",
+          "name": "My_VNET1_subnet1",
+          "properties": {
+            "addressPrefix": "10.0.0.0/24"
+          },
+          "dependson": [
+            "My_VNET1"
+          ]
+        },
+        {
+          "apiVersion": "2018-10-01",
+          "type": "subnets",
+          "location": "[resourceGroup().location]",
+          "name": "GatewaySubnet",
+          "properties": {
+            "addressPrefix": "10.0.1.0/27"
+          },
+          "dependson": [
+            "My_VNET1"
+          ]
+        }
+      ]
+    },
+    {
+      "apiVersion": "2018-10-01",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "My_VNET2",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "172.16.0.0/16"
+          ]
+        }
+      },
+      "resources": [
+        {
+          "apiVersion": "2018-10-01",
+          "type": "subnets",
+          "location": "[resourceGroup().location]",
+          "name": "My_VNET2_subnet1",
+          "properties": {
+            "addressPrefix": "172.16.0.0/24"
+          },
+          "dependson": [
+            "MY_VNET2"
+          ]
+        },
+        {
+          "apiVersion": "2018-10-01",
+          "type": "subnets",
+          "location": "[resourceGroup().location]",
+          "name": "GatewaySubnet",
+          "properties": {
+            "addressPrefix": "172.16.1.0/27"
+          },
+          "dependson": [
+            "My_VNET2"
+          ]
+        }
+      ]
+    },
+    {
+      "apiVersion": "2018-10-01",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "My_VNET2_1",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        }
+      },
+      "resources": [
+        {
+          "apiVersion": "2018-10-01",
+          "type": "subnets",
+          "location": "[resourceGroup().location]",
+          "name": "My_VNET2_1_subnet1",
+          "properties": {
+            "addressPrefix": "10.0.0.0/24"
+          },
+          "dependson": [
+            "My_VNET2_1"
+          ]
+        },
+        {
+          "apiVersion": "2018-10-01",
+          "type": "subnets",
+          "location": "[resourceGroup().location]",
+          "name": "GatewaySubnet",
+          "properties": {
+            "addressPrefix": "10.0.1.0/27"
+          },
+          "dependson": [
+            "My_VNET2_1"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Network/PublicIPAddresses",
+      "apiVersion": "2019-02-01",
+      "name": "[concat('My-VPN-pip',copyIndex(1))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard"
+      },
+      "properties": {
+        "publicIpAllocationMethod": "static"
+      },
+      "copy": {
+        "name": "copypipvpn",
+        "count": 2
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/virtualNetworkGateways",
+      "name": "My_VPNGW1",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "copypipvpn",
+        "Microsoft.Network/virtualNetworks/My_VNET1",
+        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/gatewaysubnet"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet')]"
+              },
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip1')]"
+              }
+            },
+            "name": "vnetGatewayConfig"
+          }
+        ],
+        "gatewayType": "Vpn",
+        "sku": {
+          "name": "VpnGw1AZ",
+          "tier": "VpnGw1AZ"
+        },
+        "vpnType": "RouteBased",
+        "enableBgp": false,
+        "vpnClientConfiguration": {
+          "vpnClientIpsecPolicies": [
+            {
+              "saLifeTimeSeconds": 300,
+              "saDataSizeKilobytes": 1024,
+              "ipsecEncryption": "AES128",
+              "ipsecIntegrity": "SHA1",
+              "ikeEncryption": "AES128",
+              "ikeIntegrity": "SHA1",
+              "dhGroup": "DHGroup2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "apiVersion": "2019-04-01",
+      "type": "Microsoft.Network/virtualNetworkGateways",
+      "name": "My_VPNGW2",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "copypipvpn",
+        "Microsoft.Network/virtualNetworks/My_VNET2",
+        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/gatewaysubnet"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet')]"
+              },
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip2')]"
+              }
+            },
+            "name": "vnetGatewayConfig2"
+          }
+        ],
+        "gatewayType": "Vpn",
+        "sku": {
+          "name": "VpnGw1AZ",
+          "tier": "VpnGw1AZ"
+        },
+        "vpnType": "RouteBased",
+        "enableBgp": false,
+        "vpnClientConfiguration": {
+          "vpnClientIpsecPolicies": [
+            {
+              "saLifeTimeSeconds": 300,
+              "saDataSizeKilobytes": 1024,
+              "ipsecEncryption": "AES128",
+              "ipsecIntegrity": "SHA1",
+              "ikeEncryption": "AES128",
+              "ikeIntegrity": "SHA1",
+              "dhGroup": "DHGroup2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "My_LNG_To_VPN2",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "172.16.0.0/16"
+          ]
+        },
+        "gatewayIpAddress": "[reference(resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip2')).IpAddress]"
+      },
+      "dependsOn": [
+        "copypipvpn"
+      ]
+    },
+    {
+      "apiVersion": "2015-05-01-preview",
+      "type": "Microsoft.Network/localNetworkGateways",
+      "name": "My_LNG_To_VPN1",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "localNetworkAddressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "gatewayIpAddress": "[reference(resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip1')).IpAddress]"
+      },
+      "dependsOn": [
+        "copypipvpn"
+      ]
+    },
+    {
+      "apiVersion": "2018-07-01",
+      "name": "My_VNET1toVNET2_Conn",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworkGateways/', 'My_VPNGW1')]",
+        "[resourceId('Microsoft.Network/localNetworkGateways', 'My_LNG_To_VPN2')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', 'My_VPNGW1')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[resourceId('Microsoft.Network/localNetworkGateways', 'My_LNG_To_VPN2')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "[parameters('sharedKey')]"
+      }
+    },
+    {
+      "apiVersion": "2018-07-01",
+      "name": "My_VNET2toVNET1_Conn",
+      "type": "Microsoft.Network/connections",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworkGateways', 'My_VPNGW2')]",
+        "[resourceId('Microsoft.Network/localNetworkGateways', 'My_LNG_To_VPN1')]"
+      ],
+      "properties": {
+        "virtualNetworkGateway1": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', 'My_VPNGW2')]"
+        },
+        "localNetworkGateway2": {
+          "id": "[resourceId('Microsoft.Network/localNetworkGateways', 'My_LNG_To_VPN1')]"
+        },
+        "connectionType": "IPsec",
+        "routingWeight": 10,
+        "sharedKey": "[parameters('sharedKey')]"
+      }
+    }
+  ],
+  "outputs": {}
+}

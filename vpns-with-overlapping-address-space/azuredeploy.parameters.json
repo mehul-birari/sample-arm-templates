@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "SharedKey": {
+      "value": "GEN-UNIQUE"
+    },
+    "virtualNetwork1": {
+      "value": "GEN-UNIQUE"
+    },
+    "subnetForVirtualNetwork1": {
+      "value": "GEN-UNIQUE"
+    },
+    "gatewaySubnetForVirtualNetwork1": {
+      "value": "GEN-UNIQUE"
+    },
+    "virtualNetwork2": {
+      "value": "GEN-UNIQUE"
+    },
+    "subnetForVirtualNetwork2": {
+      "value": "GEN-UNIQUE"
+    },
+    "gatewaySubnetForVirtualNetwork2": {
+      "value": "GEN-UNIQUE"
+    },
+    "publicIpAddressName": {
+      "value": "GEN-UNIQUE"
+    },
+    "virtualNetworkGateway1": {
+      "value": "GEN-UNIQUE"
+    },
+    "virtualNetworkGateway2": {
+      "value": "GEN-UNIQUE"
+    },
+    "localNetworkGateway1": {
+      "value": "GEN-UNIQUE"
+    },
+    "localNetworkGateway2": {
+      "value": "GEN-UNIQUE"
+    },
+    "vnet1ToVnet2Connection": {
+      "value": "GEN-UNIQUE"
+    },
+    "vnet2ToVnet1Connection": {
+      "value": "GEN-UNIQUE"
+    }
+  }
+
+}    
