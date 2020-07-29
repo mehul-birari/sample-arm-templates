@@ -220,13 +220,13 @@
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
       ],
       "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
         "typeHandlerVersion": "2.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-customscript-extension-public-storage-on-ubuntu/scripts/hello.sh"
+            "https://raw.githubusercontent.com/mehul-birari/sample-arm-templates/master/fileshare-not-available-on-windows-vm/scripts/hello.sh"
           ],
           "commandToExecute": "[parameters('commandToExecute')]"
         },
