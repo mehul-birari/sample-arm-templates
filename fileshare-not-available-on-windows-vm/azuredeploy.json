@@ -54,7 +54,7 @@
     "scenarioPrefix": "fswinvm",
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
-    "storageaccountname": "[concat(variables('scenarioPrefix'), 'storageacc')]",
+    "storageaccountname": "[concat(variables('scenarioPrefix'), 'stacc')]",
     "publicIPAddressName": "[concat(variables('scenarioPrefix'), 'PublicIP')]",
     "publicIPAddressType": "Dynamic",
     "virtualNetworkName": "[concat(variables('scenarioPrefix'), 'Vnet')]",
@@ -146,7 +146,7 @@
           }
         ],
         "networkSecurityGroup": {
-          "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/networkSecurityGroups/AZCXP_STG_LAB1_NSG')]"
+          "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/networkSecurityGroups/', variables('nicName'))]"
         }
       }
     },
