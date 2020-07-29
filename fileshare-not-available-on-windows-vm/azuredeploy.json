@@ -146,7 +146,7 @@
           }
         ],
         "networkSecurityGroup": {
-          "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/networkSecurityGroups/', variables('nicName'))]"
+          "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
         }
       }
     },
