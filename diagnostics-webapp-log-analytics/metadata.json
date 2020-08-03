@@ -1,9 +1,12 @@
 {
-  "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
-  "type": "QuickStart",
-  "itemDisplayName": "Enable diagnostics for a webapp to send logs to a Log Analytics Workspace",
+  "type": "Scenario",
+  "TemplateName": "diagnostics-webapp-log-analytics",
+  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics Workspace",
   "description": "This template allows deploying a web app to the Azure portal and enable diagnostic settings to send logs to a specific Log Analytics Workspace",
-  "summary": "This template allows deploying a web app to the Azure portal and enable diagnostic settings to send logs to a specific Log Analytics Workspace",
+  "ServiceName": "Web Apps",
+  "ServiceID": 168,
+  "ServiceAreaID": 12,
+  "Team": "Community"
   "githubUsername": "mehul-birari",
   "dateUpdated": "2019-11-19"
 }
