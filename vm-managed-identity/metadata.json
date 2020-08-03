@@ -1,8 +1,8 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
+  "TemplateName": "vm-managed-identity",
+  "Title": "Deploy a Virtual Machine with managed identity",
+  "description": "This template enables us to deploy a Virtual Machine with managed identity.",
   "ServiceName": "Virtual Machines",
   "ServiceID": 50,
   "ServiceAreaID": 3,
