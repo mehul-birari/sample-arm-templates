@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
+  "TemplateName": "app-service-behind-app-gateway",
+  "Title": "Deploy an Application Service along with Application Gateway",
+  "description": "This template lets us to deploy an Application Gateway with Application Gateway. The purpose of this template is to show that App Service cannot be reached behind Application Gateway because App Service listens in HTTPS.",
+  "ServiceName": "Application Gateway",
+  "ServiceID": 138,
+  "ServiceAreaID": 10,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
