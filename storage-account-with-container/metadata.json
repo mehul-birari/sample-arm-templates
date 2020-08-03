@@ -1,12 +1,12 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
-  "Team": "Chat",
+  "TemplateName": "storage-account-with-container",
+  "Title": "Deploy a Storage account with a container",
+  "description": "This template enables us to deploy a Storage account with a container.",
+  "ServiceName": "Storage Accounts",
+  "ServiceID": 162,
+  "ServiceAreaID": 11,
+  "Team": "Community",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
 }
