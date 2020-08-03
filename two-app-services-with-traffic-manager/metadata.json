@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
+  "TemplateName": "two-app-services-with-traffic-manager",
+  "Title": "Deploy two App Services with Traffic Manager in front of them",
+  "description": "This template enables us to deploy two app services with a Traffic Manager in front of them.",
+  "ServiceName": "App Service",
+  "ServiceID": 166,
+  "ServiceAreaID": 12,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
