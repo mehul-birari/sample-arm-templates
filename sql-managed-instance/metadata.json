@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
+  "TemplateName": "sql-managed-instance",
+  "Title": "Deploy an Azure SQL Managed Instance (Full Environment)",
+  "description": "This template allows us to deploy Azure SQL Managed Instance as a full environment including a NSG and route tables.",
+  "ServiceName": "Azure SQL Database",
+  "ServiceID": 60,
+  "ServiceAreaID": 4,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
