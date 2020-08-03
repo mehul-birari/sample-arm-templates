@@ -1,12 +1,12 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
-  "Team": "Chat",
+  "TemplateName": "function-app-timer-trigger",
+  "Title": "Deploy a Function App with a Timer Trigger",
+  "description": "This template enables us to deploy a Function App with a Timer Trigger.",
+  "ServiceName": "Functions",
+  "ServiceID": 90,
+  "ServiceAreaID": 7,
+  "Team": "Community",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
 }
