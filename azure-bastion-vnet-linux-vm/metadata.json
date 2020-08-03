@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
+  "TemplateName": "azure-bastion-vnet-linux-vm",
+  "Title": "Create an Azure Bastion in an Azure Virtual Network for a Linux Virtual Machine",
+  "description": "This template lets us create an Azure Bastion in a new or existing Azure Virtual Network for a Linux Virtual Machine.",
+  "ServiceName": "Bastion",
+  "ServiceID": 222,
+  "ServiceAreaID": 10,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
