@@ -1,8 +1,8 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
+  "TemplateName": "vm-pwd-secrets-keyvault",
+  "Title": "Deploy a Virtual Machine with password secret in KeyVault",
+  "description": "This template enables us to deploy a Virtual Machine with password secret in KeyVault.",
   "ServiceName": "Virtual Machines",
   "ServiceID": 50,
   "ServiceAreaID": 3,
