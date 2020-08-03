@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "1-vpn-p2s-peered-vnet",
+  "Title": "Deploy 1 VPN with P2S address space and use the same as a peered VNET",
+  "description": "This template allows us to deploy one VPN with P2S address space and use the same as a peered VNET.",
+  "ServiceName": "VPN Gateway",
+  "ServiceID": 147,
+  "ServiceAreaID": 10,
+  "Team": "Chat",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
