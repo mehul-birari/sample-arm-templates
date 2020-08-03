@@ -1,12 +1,12 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
-  "Team": "Chat",
+  "TemplateName": "action-group-trigger-email-kusto-query",
+  "Title": "Create an Action Group with alerts",
+  "description": "This template allows us to create an action group with alerts to trigger email to an individual's alias via a sample kusto query.",
+  "ServiceName": "Azure Monitor",
+  "ServiceID": 112,
+  "ServiceAreaID": 9,
+  "Team": "Community",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
 }
