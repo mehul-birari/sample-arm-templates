@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
+  "TemplateName": "2-vpns-different-dh-groups",
+  "Title": "Deploy 2 VPNs connected to each other with different DH Groups",
+  "description": "This template allows us to deploy 2 VPNs connected with each other having different DH Groups.",
+  "ServiceName": "VPN Gateway",
+  "ServiceID": 147,
+  "ServiceAreaID": 10,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
