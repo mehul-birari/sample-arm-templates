@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "sql-failover-group",
-  "Title": "Deploy a SQL Failover Group from scratch",
-  "description": "This template allows us to deploy a SQL Failover Group for 2 Azure SQL Servers (Primary and Secondary) and a SQL Database.",
-  "ServiceName": "Azure SQL Database",
-  "ServiceID": 60,
-  "ServiceAreaID": 4,
+  "TemplateName": "multiple-vms-custom-vhd-image",
+  "Title": "Deploy multiple copies of a Virtual Machine based on a custom vhd image",
+  "description": "This template allows us to deploy multiple copies of an Azure Virtual Machine using a custom vhd image. Each VM will have it's own public IP Address.",
+  "ServiceName": "Virtual Machines",
+  "ServiceID": 50,
+  "ServiceAreaID": 3,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
