@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "ghuser"
+    },
+    "userImageStorageAccountName": {
+      "value": "account that holds the custom image"
+    },
+    "userImageStorageContainerName": {
+      "value": "container that holds the image"
+    },
+    "userImageVhdName": {
+      "value": "file name of the image"
+    },
+    "osType": {
+      "value": "Windows"
+    },
+    "vmSize": {
+      "value": "Standard_D2"
+    },
+    "numberOfInstances": {
+      "value": 3
+    },
+    "copyOffset": {
+      "value": 1
+    },
+    "vmImageStorageContainerName": {
+      "value": "vhd-instances"
+    }
+  }
+}
