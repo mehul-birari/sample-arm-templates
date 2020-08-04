@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "encryption-enabled-vm",
-  "Title": "Enable diagnostics for a webapp to send logs to a Log Analytics WorkspaceDeploy a Virtual Machine with Encryption enabled",
-  "description": "This template enables us to deploy an encryption enabled Virtual Machine.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
-  "ServiceAreaID": 3,
+  "TemplateName": "vpns-with-overlapping-address-space",
+  "Title": "Deploy 2 VPNs with overlapping address space",
+  "description": "This template enables us to deploy 2 VPNs connected between themselves (using IPSec). In one of them, an extra VNET is created with the same address space as the remote VPN and peered it with the VPN VNet. (VPN1 in VNET1, VPN2 in VNET2 and VNET2-1 peered with same address space as VNET1)",
+  "ServiceName": "VPN Gateway",
+  "ServiceID": 147,
+  "ServiceAreaID": 10,
   "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
