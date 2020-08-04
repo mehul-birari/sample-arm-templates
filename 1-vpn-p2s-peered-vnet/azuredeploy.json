@@ -21,21 +21,6 @@
       "type": "string",
       "defaultValue": "GatewaySubnet"
     },
-    "virtualNetwork2": {
-      "type": "string",
-      "defaultValue": "My_VNET2",
-      "metadata": {
-        "description": "Name of VNET 2"
-      }
-    },
-    "subnetForVirtualNetwork2": {
-      "type": "string",
-      "defaultValue": "My_VNET2_subnet1"
-    },
-    "gatewaySubnetForVirtualNetwork2": {
-      "type": "string",
-      "defaultValue": "GatewaySubnet"
-    },
     "publicIpAddressName": {
       "type": "string",
       "defaultValue": "My-VPN-pip"
@@ -44,17 +29,9 @@
       "type": "string",
       "defaultValue": "My_VPNGW1"
     },
-    "virtualNetworkGateway2": {
-      "type": "string",
-      "defaultValue": "My_VPNGW2"
-    },
     "localNetworkGateway1": {
       "type": "string",
       "defaultValue": "My_LNG_To_VPN2"
-    },
-    "localNetworkGateway2": {
-      "type": "string",
-      "defaultValue": "My_LNG_To_VPN1"
     },
     "connectionName": {
       "type": "string",
