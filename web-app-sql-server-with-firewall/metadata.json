@@ -1,8 +1,8 @@
 {
   "type": "Scenario",
-  "TemplateName": "webapp-application-insights",
-  "Title": "Deploy a Webapp + Application Insights using ARM",
-  "description": "This template enables us to deploy a web app with an Application Insights extension.",
+  "TemplateName": "web-app-sql-server-with-firewall",
+  "Title": "Deploy a Webapp + Sql Server with database with enabled firewall",
+  "description": "This template allows us to a web app with SQL server with a database with firewall of the server enabled.",
   "ServiceName": "Web Apps",
   "ServiceID": 168,
   "ServiceAreaID": 12,
