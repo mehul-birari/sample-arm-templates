@@ -196,9 +196,6 @@
                 "[uri(parameters('_artifactsLocation'), concat(variables('scriptFileName'), parameters('_artifactsLocationSasToken')))]"
               ],
               "commandToExecute": "[concat('bash ', variables('scriptFileName'), ' ', variables('scriptArgs'))]"
-            },
-            "protectedSettings": {
-              "commandToExecute": "[concat('bash ', variables('scriptFileName'), ' ', variables('scriptArgs'))]" 
             }
           }
         }
