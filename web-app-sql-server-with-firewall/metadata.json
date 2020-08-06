@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "webapp-application-insights",
+  "Title": "Deploy a Webapp + Application Insights using ARM",
+  "description": "This template enables us to deploy a web app with an Application Insights extension.",
+  "ServiceName": "Web Apps",
+  "ServiceID": 168,
+  "ServiceAreaID": 12,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
