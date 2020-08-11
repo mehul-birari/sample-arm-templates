@@ -1,12 +1,12 @@
 {
   "type": "Scenario",
-  "TemplateName": "windows-vm-hybrid-worker-group",
-  "Title": "Deploy a Virtual Machine and execute PowerShell script in it",
-  "description": "This template enables us to deploy a Virtual Machine and execute a PowerShell script in it.",
+  "TemplateName": "windows-rescue-vm-custom-image",
+  "Title": "Deploy a Windows Rescue VM by picking custom image from a new storage account",
+  "description": "This template enables us to deploy a rescue Virtual Machine from a custom image in a new storage account which should have the source image VHD for the VM deployment before it happens. This template will create 2 Virtual Machines, one being the transfer VM and the second being the Rescue VM. Transfer VM can be deleted after the deployment is complete.",
   "ServiceName": "Virtual Machines",
   "ServiceID": 50,
   "ServiceAreaID": 3,
-  "Team": "Community",
+  "Team": "Chat",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
 }
