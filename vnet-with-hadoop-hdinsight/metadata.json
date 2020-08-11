@@ -1,7 +1,7 @@
 {
   "type": "Scenario",
   "TemplateName": "vnet-with-hadoop-hdinsight",
-  "Title": "Deploy a HDInsight Cluster (Spark) within a VNET",
+  "Title": "Deploy a HDInsight Cluster (Hadoop) within a VNET",
   "description": "This template allows deploying of a HDInsight Cluster with Spark framework within a Virtual Network.",
   "ServiceName": "HDInsight",
   "ServiceID": 40,
