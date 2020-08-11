@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "hdinsight-cluster-spark",
+  "Title": "Deploy a HDInsight Cluster (Spark)",
+  "description": "This template allows deploying of a HDInsight Cluster with Spark framework.",
+  "ServiceName": "HDInsight",
+  "ServiceID": 40,
+  "ServiceAreaID": 2,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
