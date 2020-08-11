@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "app-gateway-health-probe",
+  "Title": "Deploy an Application Gateway with lack of health probe",
+  "description": "This template lets us to deploy an Application Gateway with lack of health probe.",
+  "ServiceName": "Application Gateway",
+  "ServiceID": 138,
+  "ServiceAreaID": 10,
+  "Team": "Chat",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
