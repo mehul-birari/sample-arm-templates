@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "vnet-with-spark-hdinsight",
+  "Title": "Deploy a HDInsight Cluster (Spark) within a VNET",
+  "description": "This template allows deploying of a HDInsight Cluster with Spark framework within a Virtual Network.",
+  "ServiceName": "HDInsight",
+  "ServiceID": 40,
+  "ServiceAreaID": 2,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
