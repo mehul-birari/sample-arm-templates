@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "windows-vm-hybrid-worker-group",
+  "Title": "Deploy a Virtual Machine and execute PowerShell script in it",
+  "description": "This template enables us to deploy a Virtual Machine and execute a PowerShell script in it.",
+  "ServiceName": "Virtual Machines",
+  "ServiceID": 50,
+  "ServiceAreaID": 3,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
