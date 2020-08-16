@@ -89,7 +89,7 @@
             "addressPrefix": "10.0.0.0/24"
           },
           "dependson": [
-            "My_VNET1"
+            "Microsoft.Network/virtualNetworks/My_VNET1"
           ]
         },
         {
@@ -101,7 +101,7 @@
             "addressPrefix": "10.0.1.0/27"
           },
           "dependson": [
-            "My_VNET1"
+            "Microsoft.Network/virtualNetworks/My_VNET1"
           ]
         }
       ]
@@ -128,7 +128,7 @@
             "addressPrefix": "172.16.0.0/24"
           },
           "dependson": [
-            "MY_VNET2"
+            "Microsoft.Network/virtualNetworks/My_VNET2"
           ]
         },
         {
@@ -140,7 +140,7 @@
             "addressPrefix": "172.16.1.0/27"
           },
           "dependson": [
-            "My_VNET2"
+            "Microsoft.Network/virtualNetworks/My_VNET2"
           ]
         }
       ]
