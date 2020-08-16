@@ -162,14 +162,14 @@
       }
     },
     {
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2019-04-01",
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "My_VPNGW1",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "copypipvpn",
         "Microsoft.Network/virtualNetworks/My_VNET1",
-        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/gatewaysubnet"
+        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet"
       ],
       "properties": {
         "ipConfigurations": [
@@ -202,7 +202,8 @@
               "ipsecIntegrity": "SHA1",
               "ikeEncryption": "AES128",
               "ikeIntegrity": "SHA1",
-              "dhGroup": "DHGroup2"
+              "dhGroup": "DHGroup2",
+              "pfsGroup": "PFS1"
             }
           ]
         }
@@ -216,7 +217,7 @@
       "dependsOn": [
         "copypipvpn",
         "Microsoft.Network/virtualNetworks/My_VNET2",
-        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/gatewaysubnet"
+        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet"
       ],
       "properties": {
         "ipConfigurations": [
@@ -249,7 +250,8 @@
               "ipsecIntegrity": "SHA1",
               "ikeEncryption": "AES128",
               "ikeIntegrity": "SHA1",
-              "dhGroup": "DHGroup14"
+              "dhGroup": "DHGroup14",
+              "pfsGroup": "PFS1"
             }
           ]
         }
