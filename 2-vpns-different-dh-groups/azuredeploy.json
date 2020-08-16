@@ -202,8 +202,7 @@
               "ipsecIntegrity": "SHA1",
               "ikeEncryption": "AES128",
               "ikeIntegrity": "SHA1",
-              "dhGroup": "DHGroup2",
-              "pfsGroup": "PFS1"
+              "dhGroup": "DHGroup2"
             }
           ]
         }
@@ -251,7 +250,6 @@
               "ikeEncryption": "AES128",
               "ikeIntegrity": "SHA1",
               "dhGroup": "DHGroup14",
-              "pfsGroup": "PFS1"
             }
           ]
         }
