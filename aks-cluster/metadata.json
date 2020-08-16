@@ -1,11 +1,11 @@
 {
   "type": "Scenario",
-  "TemplateName": "action-group-trigger-email-kusto-query",
-  "Title": "Create an Action Group with alerts",
-  "description": "This template allows us to create an action group with alerts to trigger email to an individual's alias via a sample kusto query.",
-  "ServiceName": "Azure Monitor",
-  "ServiceID": 112,
-  "ServiceAreaID": 9,
+  "TemplateName": "aks-cluster",
+  "Title": "Deploy an Azure Container Service",
+  "description": "This template allows us to deploy an AKS Cluster.",
+  "ServiceName": "Azure Container Service (AKS)",
+  "ServiceID": 52,
+  "ServiceAreaID": 3,
   "Team": "Community",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
