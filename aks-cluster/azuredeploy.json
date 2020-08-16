@@ -18,7 +18,7 @@
     },
     "dnsPrefix": {
       "type": "string",
-      "defaultValue": "myDNSPre"
+      "defaultValue": "myDNSPre",
       "metadata": {
         "description": "Optional DNS prefix to use with hosted Kubernetes API server FQDN."
       }
@@ -50,7 +50,7 @@
     },
     "linuxAdminUsername": {
       "type": "string",
-      "defaultValue": "azureuser"
+      "defaultValue": "azureuser",
       "metadata": {
         "description": "User name for the Linux Virtual Machines."
       }
