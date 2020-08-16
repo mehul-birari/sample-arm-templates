@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "aks-cluster",
+  "Title": "Deploy an Azure Container Service",
+  "description": "This template allows us to deploy an AKS Cluster.",
+  "ServiceName": "Azure Container Service (AKS)",
+  "ServiceID": 52,
+  "ServiceAreaID": 3,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}

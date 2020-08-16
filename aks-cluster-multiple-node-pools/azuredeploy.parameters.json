@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "value": "GEN-UNIQUE"
+    },
+    "dnsPrefix": {
+      "value": "GEN-UNIQUE"
+    },
+    "linuxAdminUsername": {
+      "value": "GEN-UNIQUE"
+    },
+    "sshRSAPublicKey": {
+      "value": "GEN-SSH-PUB-KEY"
+    },
+    "servicePrincipalClientId": {
+      "value": "GEN-AZUREAD-AKS-APPID"
+    },
+    "servicePrincipalClientSecret": {
+      "value": "GEN-AZUREAD-AKS-APPID-SECRET"
+    },
+    "agentPoolProfiles": {
+      "value": [
+        {
+          "name": "nodepool1",
+          "nodeCount": 3,
+          "nodeVmSize": "Standard_D4_v3",
+          "availabilityZones": [
+            "1",
+            "2",
+            "3"
+          ],
+          "osType": "Linux",
+          "enableAutoScaling": true,
+          "maxCount": 6,
+          "minCount": 3,
+          "mode": "System",
+          "nodeLabels": {
+            "environment": "demo"
+          },
+          "nodeTaints": []
+        }
+      ]
+    }
+  }
+}
