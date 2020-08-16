@@ -1,8 +1,8 @@
 {
   "type": "Scenario",
-  "TemplateName": "aks-cluster",
-  "Title": "Deploy an Azure Container Service",
-  "description": "This template allows us to deploy an AKS Cluster.",
+  "TemplateName": "aks-cluster-multiple-node-pools",
+  "Title": "Deploy an Azure Container Service (AKS) Cluster with multiple node pools",
+  "description": "This template allows us to deploy an AKS Cluster with multiple node pools.",
   "ServiceName": "Azure Container Service (AKS)",
   "ServiceID": 52,
   "ServiceAreaID": 3,
