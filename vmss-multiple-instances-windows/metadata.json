@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "vmss-multiple-instances-linux",
+  "Title": "Deploy Virtual Machine Scale Sets with Multiple instances (Linux)",
+  "description": "This template enables us to deploy multiple VMSS (Linux).",
+  "ServiceName": "Virtual Machine Scale Sets",
+  "ServiceID": 49,
+  "ServiceAreaID": 3,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
