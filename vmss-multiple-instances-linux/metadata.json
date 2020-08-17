@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "vm-pwd-secrets-keyvault",
+  "Title": "Deploy a Virtual Machine with password secret in KeyVault",
+  "description": "This template enables us to deploy a Virtual Machine with password secret in KeyVault.",
+  "ServiceName": "Virtual Machines",
+  "ServiceID": 50,
+  "ServiceAreaID": 3,
+  "Team": "Chat",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
