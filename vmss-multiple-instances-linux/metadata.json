@@ -1,12 +1,12 @@
 {
   "type": "Scenario",
-  "TemplateName": "vm-pwd-secrets-keyvault",
-  "Title": "Deploy a Virtual Machine with password secret in KeyVault",
-  "description": "This template enables us to deploy a Virtual Machine with password secret in KeyVault.",
-  "ServiceName": "Virtual Machines",
-  "ServiceID": 50,
+  "TemplateName": "vmss-multiple-instances-linux",
+  "Title": "Deploy Virtual Machine Scale Sets with Multiple instances (Linux)",
+  "description": "This template enables us to deploy multiple VMSS (Linux).",
+  "ServiceName": "Virtual Machine Scale Sets",
+  "ServiceID": 49,
   "ServiceAreaID": 3,
-  "Team": "Chat",
+  "Team": "Community",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
 }
