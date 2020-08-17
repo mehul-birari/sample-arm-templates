@@ -249,7 +249,7 @@
               "ipsecIntegrity": "SHA1",
               "ikeEncryption": "AES128",
               "ikeIntegrity": "SHA1",
-              "dhGroup": "DHGroup14",
+              "dhGroup": "DHGroup14"
             }
           ]
         }
