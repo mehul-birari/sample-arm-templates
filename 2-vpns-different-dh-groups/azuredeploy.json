@@ -19,7 +19,7 @@
     },
     "gatewaySubnetForVirtualNetwork1": {
       "type": "string",
-      "defaultValue": "GatewaySubnet"
+      "defaultValue": "GatewaySubnet1"
     },
     "virtualNetwork2": {
       "type": "string",
@@ -34,7 +34,7 @@
     },
     "gatewaySubnetForVirtualNetwork2": {
       "type": "string",
-      "defaultValue": "GatewaySubnet"
+      "defaultValue": "GatewaySubnet2"
     },
     "publicIpAddressName": {
       "type": "string",
@@ -96,7 +96,7 @@
           "apiVersion": "2018-10-01",
           "type": "subnets",
           "location": "[resourceGroup().location]",
-          "name": "GatewaySubnet",
+          "name": "GatewaySubnet1",
           "properties": {
             "addressPrefix": "10.0.1.0/27"
           },
@@ -135,7 +135,7 @@
           "apiVersion": "2018-10-01",
           "type": "subnets",
           "location": "[resourceGroup().location]",
-          "name": "GatewaySubnet",
+          "name": "GatewaySubnet2",
           "properties": {
             "addressPrefix": "172.16.1.0/27"
           },
@@ -169,7 +169,7 @@
       "dependsOn": [
         "copypipvpn",
         "Microsoft.Network/virtualNetworks/My_VNET1",
-        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet",
+        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet1",
         "Microsoft.Network/virtualNetworks/My_VNET1/subnets/My_VNET1_subnet1"
       ],
       "properties": {
@@ -178,7 +178,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet')]"
+                "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet1')]"
               },
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip1')]"
@@ -217,7 +217,7 @@
       "dependsOn": [
         "copypipvpn",
         "Microsoft.Network/virtualNetworks/My_VNET2",
-        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet",
+        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet2",
         "Microsoft.Network/virtualNetworks/My_VNET1/subnets/My_VNET2_subnet1"
       ],
       "properties": {
@@ -226,7 +226,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet')]"
+                "id": "[concat(resourceGroup().id,'/providers/Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet2')]"
               },
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses','My-VPN-pip2')]"
