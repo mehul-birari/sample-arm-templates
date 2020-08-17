@@ -169,8 +169,7 @@
       "dependsOn": [
         "copypipvpn",
         "Microsoft.Network/virtualNetworks/My_VNET1",
-        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet",
-        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/My_VNET1_subnet1"
+        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/GatewaySubnet"
       ],
       "properties": {
         "ipConfigurations": [
@@ -217,8 +216,7 @@
       "dependsOn": [
         "copypipvpn",
         "Microsoft.Network/virtualNetworks/My_VNET2",
-        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet",
-        "Microsoft.Network/virtualNetworks/My_VNET1/subnets/My_VNET2_subnet1"
+        "Microsoft.Network/virtualNetworks/My_VNET2/subnets/GatewaySubnet"
       ],
       "properties": {
         "ipConfigurations": [
