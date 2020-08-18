@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "3-vm-hybrid-config",
+  "Title": "Deploy 3 Windows Virtual Machines - DC, WAP and SYNC",
+  "description": "This template enables us to deploy 3 Windows Virtual Machines - DC, WAP and SYNC.",
+  "ServiceName": "Virtual Machines",
+  "ServiceID": 50,
+  "ServiceAreaID": 3,
+  "Team": "Community",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
