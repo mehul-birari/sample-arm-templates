@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "vm-variable-data-disks",
+  "Title": "Deploy a Windows Virtual Machine with variable number of data disks",
+  "description": "This template enables us to deploy a Windows Virtual Machine and mention the number of data disks as a parameter during deployment. ",
+  "ServiceName": "Virtual Machines",
+  "ServiceID": 50,
+  "ServiceAreaID": 3,
+  "Team": "Chat",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
