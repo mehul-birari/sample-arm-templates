@@ -40,7 +40,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_A8",
+      "defaultValue": "Standard_D8_v4",
       "metadata": {
         "description": "Size of the virtual machine."
       }
