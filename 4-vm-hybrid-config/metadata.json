@@ -1,12 +1,12 @@
 {
   "type": "Scenario",
-  "TemplateName": "vm-variable-data-disks",
-  "Title": "Deploy a Windows Virtual Machine with variable number of data disks",
-  "description": "This template enables us to deploy a Windows Virtual Machine and mention the number of data disks as a parameter during deployment. ",
+  "TemplateName": "4-vm-hybrid-config",
+  "Title": "Deploy 4 Windows Virtual Machines - DC, WAP, ADFS and SYNC",
+  "description": "This template enables us to deploy 4 Windows Virtual Machines -DC, WAP, ADFS and SYNC.",
   "ServiceName": "Virtual Machines",
   "ServiceID": 50,
   "ServiceAreaID": 3,
-  "Team": "Chat",
+  "Team": "Community",
   "githubUsername": "mehul-birari",
   "dateUpdated": "2020-08-03"
 }
