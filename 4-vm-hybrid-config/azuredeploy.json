@@ -47,7 +47,7 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "US West 2",
+      "defaultValue": "West US 2",
       "metadata": {
         "description": "Location for all resources."
       }
