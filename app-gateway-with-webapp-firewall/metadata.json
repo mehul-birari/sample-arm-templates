@@ -1,0 +1,12 @@
+{
+  "type": "Scenario",
+  "TemplateName": "app-gateway-webapp-http-backend-rule",
+  "Title": "Deploy an Application Gateway in front of a Web App with it listening in HTTPS only",
+  "description": "This template lets us to deploy an Application Gateway and set up the Web App to be listening in HTTPS and have the backend rules for HTTP.",
+  "ServiceName": "Application Gateway",
+  "ServiceID": 138,
+  "ServiceAreaID": 10,
+  "Team": "Chat",
+  "githubUsername": "mehul-birari",
+  "dateUpdated": "2020-08-03"
+}
