@@ -1,54 +1,42 @@
-/*
-  {
+{
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "actionGroupName": {
+    "logAnalyticsWorkspaceName": {
       "type": "string",
+      "defaultValue": "myLAW",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Name of the Log Analytics WorkSpace"
       }
     },
-    "actionGroupShortName": {
+    "actionGroupName": {
       "type": "string",
+      "defaultValue": "my-AG",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Name of the Action Group"
       }
     },
     "emailReceivers": {
       "type": "array",
       "metadata": {
-        "description": "The list of email receivers that are a part of this action group."
+        "description": "The list of email receivers that are part of this action group."
       },
       "defaultValue": []
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2018-03-01",
-      "name": "[parameters('actionGroupName')]",
-      "location": "Global",
-      "properties": {
-        "groupShortName": "[parameters('actionGroupShortName')]",
-        "enabled": true,
-        "emailReceivers": "[parameters('emailReceivers')]"
+    },
+    "alertName": {
+      "type": "string",
+      "defaultValue": "samplelogalert",
+      "metadata": {
+        "description": "Name of the Alert"
+      }
+    },
+    "alertLocation": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location of the Action Group"
       }
     }
-  ],
-  "outputs": {
-    "actionGroupId": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Insights/actionGroups',parameters('actionGroupName'))]"
-    }
-  }
-}
-*/
-
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
   },
   "variables": {
     "alertLocation": "eastus",
@@ -57,7 +45,7 @@
     "alertStatus": "true",
     "alertSource": {
       "Query": "requests | where resultCode == \"500\"",
-      "SourceId": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-management_migration/providers/microsoft.operationalinsights/workspaces/mbLAW",
+      "SourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('logAnalyticsWorkspaceName'))]",
       "Type": "ResultCount"
     },
     "alertSchedule": {
@@ -72,12 +60,36 @@
       "Threshold": "1"
     },
     "actionGrp": {
-      "ActionGroup": "/subscriptions/b83c1ed3-c5b6-44fb-b5ba-2b83a074c23f/resourceGroups/t-mebira-management_migration/providers/microsoft.insights/actiongroups/mb-AG",
+      "ActionGroup": "[resourceId('Microsoft.Insights/actiongroups', parameters('actionGroupName'))]",
       "Subject": "Customized Email Header",
       "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"
     }
   },
   "resources": [
+    {
+      "name": "[parameters('logAnalyticsWorkspaceName')]",
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2015-11-01-preview",
+      "location": "string",
+      "tags": {},
+      "properties": {
+        "sku": {
+          "name": "Free"
+        }
+      },
+      "resources": []
+    },
+    {
+      "type": "Microsoft.Insights/actionGroups",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('actionGroupName')]",
+      "location": "Global",
+      "properties": {
+        "groupShortName": "[parameters('actionGroupName')]",
+        "enabled": true,
+        "emailReceivers": "[parameters('emailReceivers')]"
+      }
+    },
     {
       "name": "[variables('alertName')]",
       "type": "Microsoft.Insights/scheduledQueryRules",
