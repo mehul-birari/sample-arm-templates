@@ -30,7 +30,7 @@
         "description": "Name of the Alert"
       }
     },
-    "alertLocation": {
+    "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
@@ -39,8 +39,6 @@
     }
   },
   "variables": {
-    "alertLocation": "eastus",
-    "alertName": "samplelogalert",
     "alertDescription": "Sample log search alert",
     "alertStatus": "true",
     "alertSource": {
@@ -70,7 +68,7 @@
       "name": "[parameters('logAnalyticsWorkspaceName')]",
       "type": "Microsoft.OperationalInsights/workspaces",
       "apiVersion": "2015-11-01-preview",
-      "location": "string",
+      "location": "[parameters('location')]",
       "tags": {},
       "properties": {
         "sku": {
@@ -91,10 +89,10 @@
       }
     },
     {
-      "name": "[variables('alertName')]",
+      "name": "[parameters('alertName')]",
       "type": "Microsoft.Insights/scheduledQueryRules",
       "apiVersion": "2018-04-16",
-      "location": "[variables('alertLocation')]",
+      "location": "[parameters('Location')]",
       "properties": {
         "description": "[variables('alertDescription')]",
         "enabled": "[variables('alertStatus')]",
