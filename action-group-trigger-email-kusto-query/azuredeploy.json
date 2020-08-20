@@ -86,7 +86,10 @@
         "groupShortName": "[parameters('actionGroupName')]",
         "enabled": true,
         "emailReceivers": "[parameters('emailReceivers')]"
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('logAnalyticsWorkspaceName'))]"
+      ]
     },
     {
       "name": "[parameters('alertName')]",
@@ -118,7 +121,10 @@
             "threshold": "[variables('alertTrigger').Threshold]"
           }
         }
-      }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Insights/actiongroups', parameters('actionGroupName'))]"
+      ]
     }
   ]
 }
